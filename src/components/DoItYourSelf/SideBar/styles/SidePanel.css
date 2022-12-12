@@ -1,7 +1,35 @@
-.sidepanel_container{
-    display:"flex";
-    flex-direction: column;
-    justify-content:flex-start;
-    background-color: rgb(46, 46, 46);
-    cursor: pointer;
+.sidepanel_container {
+  margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgb(46, 46, 46);
+  cursor: pointer;
+  background: #003459;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 37px 37px 0px;
+  width: 140px;
+  height: 650px;
+}
+.sidepanel_container .menu {
+  width: 140px;
+  height: 650px;
+  display: flex;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.toggle-container-side {
+  position: absolute;
+  top: 40px;
+  height: 100vh;
+  width: 495px;
+  margin-top: 20px;
+  color: #fff;
+  /* z-index: -100; */
+  height: 650px;
+  background: rgba(0, 52, 89, 0.88);
+  border-radius: 34px;
 }

@@ -1,15 +1,41 @@
-.logo_container{
-    width: 5vw;
-    font-size: 8px;
-    font-weight: 900;
-    height: 5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color:hwb(0 100% 0% / 0.977);
+.logo_container {
+  width: 5vw;
+  font-size: 8px;
+  font-weight: 900;
+  height: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: hwb(0 100% 0% / 0.977);
+  width: 70px;
+  height: 70px;
+
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: #003459;
 }
-.logo_container:hover{
-    background-color: aqua;
-    border-radius: 5px;
+.logo_container .icon {
+  font-size: 30px;
+  color: #fff;
+}
+.logo_container p {
+  color: #fff;
+  font-size: 9px;
+}
+
+.logo_container:hover,
+.active {
+  background-color: #fff;
+}
+.logo_container:hover .icon,
+.logo_container:hover p {
+  color: #003459;
+}
+.active p {
+  color: #003459;
+}
+.active .icon {
+  color: #003459;
 }

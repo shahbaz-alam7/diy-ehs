@@ -42,14 +42,14 @@ const Page = ({ addHeader }) => {
   return (
     <>
       {/* <div className='Page_main_container' ref={pageRef}> */}
-      {/* <div className="frame-viewer" ref={pageRef}>
+       <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
           <div
             id="frame"
             style={{
               clipPath: frames[data.frame.frameNumber],
             }}
-          > */}
+          > 
             <Container>
               {data.logos.map((ele, index) => {
                 return (
@@ -71,9 +71,9 @@ const Page = ({ addHeader }) => {
                 );
               })}
             </Container>
-          {/* </div>
+          </div>
         </div>
-      </div> */}
+      </div>
       {/* </div> */}
       <Download pageRef={pageRef} />
     </>

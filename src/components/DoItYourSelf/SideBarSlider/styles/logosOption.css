@@ -1,9 +1,9 @@
-.frames_container{
-    width:20vw;
+.frames_container {
+  /* width:20vw;
     background-color: aqua;
     position: absolute;
     top:0vw;
     left:5vw;
-    height:100vh;
+    height:100vh; */
+  margin-left: 145px;
 }
-
