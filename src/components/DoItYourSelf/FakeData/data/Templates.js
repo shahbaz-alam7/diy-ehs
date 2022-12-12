@@ -5,7 +5,8 @@ const Template =[
         texts:[1903,1902],
         TextTemplate:[],
         svgs:[],
-        backgroundColor:'rgb(34,5,78,1)'
+        backgroundColor:'rgb(34,5,78,1)',
+        categoryid:8003
     },
     {
         id:1202,
@@ -13,7 +14,8 @@ const Template =[
         texts:[1903,1901],
         TextTemplate:[1403],
         svgs:[],
-        backgroundColor:'rgb(34,5,78,1)'
+        backgroundColor:'rgb(34,5,78,1)',
+        categoryid:8002
     },
     {
         id:1203,
@@ -21,7 +23,8 @@ const Template =[
         texts:[1902,1903],
         TextTemplate:[],
         svgs:[],
-        backgroundColor:'rgb(134,115,178,1)'
+        backgroundColor:'rgb(134,115,178,1)',
+        categoryid:8001
     },
     {
         id:1204,
@@ -29,7 +32,8 @@ const Template =[
         texts:[1903],
         TextTemplate:[1402],
         svgs:[],
-        backgroundColor:'rgb(34,5,178,1)'
+        backgroundColor:'rgb(34,5,178,1)',
+        categoryid:8004
     }
 ]
 

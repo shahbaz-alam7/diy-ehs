@@ -1,3 +1,8 @@
-.text_container {
-  margin-left: 145px;
+.text_container{
+    width:30vw;
+    background-color: aqua;
+    position: absolute;
+    top:0vw;
+    left:5vw;
+    height:100vh;
 }

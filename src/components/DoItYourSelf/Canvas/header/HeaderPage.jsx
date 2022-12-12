@@ -33,7 +33,7 @@ console.log("how many times i run")
   }, []);
 
  return( 
-    <div style={{display:"flex",zIndex:1000, flexDirection:"row",left:"-20vw", top:"10vh",backgroundColor:"green", position:"absolute", width:"400px"}} onClick={(event)=>{event.stopPropagation()}}> 
+    <div style={{display:"flex",zIndex:20, flexDirection:"row",left:"10vw", top:"-25vh",backgroundColor:"green", position:"absolute", width:"400px"}} onClick={(event)=>{event.stopPropagation()}}> 
       
         <FontSize
           finalFontSize={finalFontSize}

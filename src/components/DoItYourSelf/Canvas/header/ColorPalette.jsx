@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { CompactPicker } from 'react-color';
 import { useDispatch } from 'react-redux';
 import CircleIcon from "@mui/icons-material/Circle";
+
 const ColorPalette = ({index,actionType,isTemplateColor,currentColor}) => {
  
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const ColorPalette = ({index,actionType,isTemplateColor,currentColor}) => {
     dispatch(actionType({props, index, pageIndex:0}))
   }
   return (
-    <div style={{border:"1px solid black", fontSize:"35px", width:"150px", marginLeft:"30%"}}>
+    <div style={{border:"1px solid black", fontSize:"5px", width:"150px", marginLeft:"30%"}}>
       <div style={{color:`${newColor}`}} onClick={()=>{setShowColorBox(showColorBox?false:true)}}>
       <CircleIcon/>
       </div>
