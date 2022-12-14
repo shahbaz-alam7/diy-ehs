@@ -1,11 +1,8 @@
 import FontPicker from "font-picker-react";
-import "../styles/font.css"
-const FontPickerComp = ({ finalFont, setFinalFont }) => {
-  
+const FontComponent = ({ finalFont, setFinalFont }) => {
   return (
-    <div style={{color:"black",height:"3vh", width:"100px"}} className="font-family-div">
+    <div className="font-family-tool">
       <FontPicker
-        style={{color:"pink"}}
         apiKey="AIzaSyDZyIxM4tyvQ9iwAxC9R7wZJilaORy5waw"
         activeFontFamily={finalFont}
         limit={200}
@@ -16,4 +13,4 @@ const FontPickerComp = ({ finalFont, setFinalFont }) => {
     </div>
   );
 };
-export default FontPickerComp;
+export default FontComponent;

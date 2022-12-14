@@ -1,19 +1,19 @@
 .sidepanel_container {
-  margin-top: 60px;
-
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   background-color: rgb(46, 46, 46);
   cursor: pointer;
-  background: #003459;
+  /* background: #003459; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 37px 37px 0px;
   width: 140px;
-  height: 650px;
+  height: 90vh;
+  background-color: rgba(0, 52, 89, 0.9);
+  position: fixed;
+  width: 85px;
+  top: 10vh;
 }
 .sidepanel_container .menu {
-  width: 140px;
+  width: 100%;
   height: 650px;
   display: flex;
   z-index: 1000;
@@ -22,14 +22,13 @@
   flex-direction: column;
 }
 .toggle-container-side {
-  position: absolute;
-  top: 40px;
-  height: 100vh;
-  width: 495px;
-  margin-top: 20px;
   color: #fff;
   /* z-index: -100; */
   height: 650px;
-  background: rgba(0, 52, 89, 0.88);
-  border-radius: 34px;
+  position: absolute;
+  width: 235px;
+  left: 85px;
+  background: #3a3a3a;
+  border-radius: 0px 10px 0px 0px;
+  overflow-y: scroll;
 }

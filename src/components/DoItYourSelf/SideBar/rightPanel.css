@@ -1,16 +1,15 @@
 .rightSide {
   /* position: absolute; */
-  
 }
 .right-panel {
-  height: 650px;
-  position: absolute;
-  top: 70px;
+  height: 598px;
+  position: fixed;
+  top: 122px;
   right: 0;
-  background: #003459;
+  background: rgba(0, 52, 89, 0.89);
   width: 20px;
   transition: all 0.4s linear;
-  border-radius: 20px 0 0 20px;
+  border-radius: 10px 0 0 0;
 }
 
 .active .right-panel {
@@ -19,19 +18,18 @@
 }
 
 .right_panel_btn {
-  background: #003459;
   position: absolute;
-  width: 35px;
+  width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
-  width: 25px;
+  width: 20px;
   height: 81px;
   left: -20px;
   top: 310px;
 
-  background: #003459;
+  background: rgba(0, 52, 89, 0.89);
   border-radius: 20px 0 0 20px;
 }
 .right_panel_btn .icon {

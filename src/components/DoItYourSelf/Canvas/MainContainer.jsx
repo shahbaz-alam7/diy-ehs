@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Frame } from "./index";
 import "./styles/MainContainer.css";
 import Download from "./Download";
+import FontStyleComp from "./header/FontStyleComp";
 const MainContainer = ({ openSlider, addHeader }) => {
   let styleSliderOpen = { justifyContent: "flex-end", paddingRight: "10vw" };
   let styleSliderClose = { justifyContent: "center" };
@@ -14,13 +15,14 @@ const MainContainer = ({ openSlider, addHeader }) => {
       {openSlider}
       <div
         style={{
-          backgroundColor: "white",
+          backgroundColor: "red",
           width: "65vw",
           height: "6.7vh",
-          position: "fixed",
+          // position: "fixed",
           right: "0vw",
         }}
       >
+        {/* <FontStyleComp /> */}
         header
       </div>
       <Frame addHeader={addHeader} />

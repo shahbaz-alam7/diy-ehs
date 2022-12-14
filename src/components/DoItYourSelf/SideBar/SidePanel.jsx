@@ -10,6 +10,8 @@ import { HiOutlineTemplate } from "react-icons/hi";
 import { IoShapesOutline } from "react-icons/io5";
 import { GoCloudUpload } from "react-icons/go";
 import { SlFrame } from "react-icons/sl";
+import { MdTextFields, MdPhotoSizeSelectLarge } from "react-icons/md";
+import { RiStickyNoteLine } from "react-icons/ri";
 
 const menu = [
   {
@@ -17,25 +19,29 @@ const menu = [
     img: <HiOutlineTemplate className="icon" />,
   },
   {
-    element: "Frames",
-    img: <SlFrame className="icon" />,
-  },
-  {
     element: "Shape",
     img: <IoShapesOutline className="icon" />,
   },
+  {
+    element: "Text",
+    img: <MdTextFields className="icon" />,
+  },
+  {
+    element: "Background",
+    img: <SlFrame className="icon" />,
+  },
 
+  {
+    element: "Canvas Size",
+    img: <MdPhotoSizeSelectLarge className="icon" />,
+  },
   {
     element: "Uploads",
     img: <GoCloudUpload className="icon" />,
   },
   {
-    element: "Text",
-    img: <GoCloudUpload className="icon" />,
-  },
-  {
-    element: "Logos",
-    img: <SlFrame className="icon" />,
+    element: "Stickers",
+    img: <RiStickyNoteLine className="icon" />,
   },
 ];
 
@@ -68,8 +74,8 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
               setAddHeader={setAddHeader}
             />
           )}
-          {sliderName === "Frames" && <Frames setOpenSlider={setOpenSlider} />}
-          {sliderName === "Logos" && (
+          {sliderName === "Background" && <Frames setOpenSlider={setOpenSlider} />}
+          {sliderName === "Stickers" && (
             <LogosOption setOpenSlider={setOpenSlider} />
           )}
         </div>
