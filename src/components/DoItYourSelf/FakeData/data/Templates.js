@@ -6,7 +6,8 @@ const Template =[
         TextTemplate:[],
         svgs:[],
         backgroundColor:'rgb(34,5,78,1)',
-        categoryid:8003
+        categoryid:8003,
+        templateImgUrl:"url"
     },
     {
         id:1202,

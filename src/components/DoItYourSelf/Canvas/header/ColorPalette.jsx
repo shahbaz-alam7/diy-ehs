@@ -1,46 +1,53 @@
-import React, { useRef, useState } from 'react'
-import { CompactPicker } from 'react-color';
-import { useDispatch } from 'react-redux';
+import React, { useRef, useState } from "react";
+import { CompactPicker } from "react-color";
+import { useDispatch } from "react-redux";
 import CircleIcon from "@mui/icons-material/Circle";
-
-const ColorPalette = ({index,actionType,isTemplateColor,currentColor}) => {
- 
+const ColorPalette = ({ index, actionType, isTemplateColor, currentColor }) => {
   const dispatch = useDispatch();
   const [newColor, setNewColor] = useState(currentColor);
-  const [showColorBox, setShowColorBox] =useState(false);
-  const captureText =(props, index)=>{
+  const [showColorBox, setShowColorBox] = useState(false);
+  const captureText = (props, index) => {
     setNewColor(props.color);
-    if(isTemplateColor){
-    dispatch(actionType({backgroundColor:props.color, pageIndex:0}))
-    }
-    else
-    dispatch(actionType({props, index, pageIndex:0}))
-  }
+    if (isTemplateColor) {
+      dispatch(actionType({ backgroundColor: props.color, pageIndex: 0 }));
+    } else dispatch(actionType({ props, index, pageIndex: 0 }));
+  };
   return (
-    <div style={{border:"1px solid black", fontSize:"5px", width:"150px", marginLeft:"30%"}}>
-      <div style={{color:`${newColor}`}} onClick={()=>{setShowColorBox(showColorBox?false:true)}}>
-      <CircleIcon/>
+    <div
+      style={{
+        // border: "1px solid black",
+        fontSize: "35px",
+        width: "40px",
+        height: "40px",
+        marginLeft: "14px",
+      }}
+    >
+      <div
+        style={{ color: `${newColor}` }}
+        onClick={() => {
+          setShowColorBox(showColorBox ? false : true);
+        }}
+      >
+        <CircleIcon />
       </div>
-      {showColorBox?
-      <div style={{position :'absolute'}}>
-      <CompactPicker
-                    onChange={(updateTextColor) =>{
-                      console.log(updateTextColor.rgb,"====")
-                      let color=`rgb(${updateTextColor.rgb.r},${updateTextColor.rgb.g},${updateTextColor.rgb.b},${updateTextColor.rgb.a})`;
+      {showColorBox ? (
+        <div style={{ position: "absolute" }}>
+          <CompactPicker
+            onChange={(updateTextColor) => {
+              console.log(updateTextColor.rgb, "====");
+              let color = `rgb(${updateTextColor.rgb.r},${updateTextColor.rgb.g},${updateTextColor.rgb.b},${updateTextColor.rgb.a})`;
 
-                      console.log(color);
-                      captureText({color:color}, index)
-                    }
-                    }
-                  />
-                  </div>
-       :null}
+              console.log(color);
+              captureText({ color: color }, index);
+            }}
+          />
+        </div>
+      ) : null}
     </div>
-  )
-}
+  );
+};
 
 export default ColorPalette;
-
 
 /*
 import React, { useState } from "react";

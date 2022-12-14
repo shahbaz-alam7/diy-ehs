@@ -1,0 +1,51 @@
+.navbar {
+  background: #003459;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px 25px;
+  height: 10vh;
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+.navbar div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .icon {
+  font-size: 1.9rem;
+  margin-left: 15px;
+}
+.navbar .icons {
+  font-size: 1.5rem;
+  margin-left: 5px;
+}
+.diy-title input {
+  border: none;
+  padding: 2px;
+  text-align: center;
+  outline: none;
+  background: #003459;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+.nav-panel {
+  height: 603px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background:#fff;
+  width: 0px;
+  z-index: 9999900;
+  transition: all 0.4s linear;
+  /* border-radius: 10px 0 0 10px; */
+}
+
+.active .nav-panel {
+  width: 140px;
+  transition: all 0.5s linear;
+}
