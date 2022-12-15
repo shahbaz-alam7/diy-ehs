@@ -143,7 +143,7 @@
   display: flex;
   margin-top: 40px;
   /* margin-left: 100px; */
-  width: 319px;
+  /* width: 319px; */
 }
 .frames {
   display: flex;
@@ -173,8 +173,7 @@
   font-size: 400px;
   background-color: #003459;
   position: absolute;
-  border:1px solid black;
-  
+  border: 1px solid black;
 }
 #frame-div {
   /* background-color: rgb(0, 0, 0); */
@@ -194,7 +193,6 @@
 #frame {
   width: 400px;
   height: 400px;
- 
 }
 h1 {
   position: absolute;

@@ -1,11 +1,20 @@
 import React from "react";
-import { Home } from "@material-ui/icons";
 import "./styles/Logo.css";
 
-const Logo = ({ element, setOpenSlider, setSliderName, img, sliderName }) => {
+const Logo = ({
+  element,
+  setOpenSlider,
+  setSliderName,
+  img,
+  sliderName,
+  color,
+}) => {
   return (
     <div
-      className={sliderName == element ? "logo_container active" : "logo_container"}
+      className={
+        sliderName == element ? "logo_container active" : "logo_container"
+      }
+      style={{ background: color }}
       onClick={() => {
         setOpenSlider(true);
         setSliderName(element);

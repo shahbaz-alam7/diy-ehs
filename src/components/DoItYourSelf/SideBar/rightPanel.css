@@ -1,58 +1,42 @@
 .right-panel {
   height: 650px;
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 125px;
   right: 0;
-  background: #003459;
-  width: 20px;
-  transition: all 0.4s linear;
-  border-radius: 20px 0 0 20px;
+  width: 117px;
+  overflow-y: scroll;
+  background: #d9d9d9;
 }
 
-.active .right-panel {
-  width: 140px;
-  transition: all 0.5s linear;
-}
-.right_panel_btn {
-  background: #003459;
-  position: absolute;
-  width: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  width: 25px;
-  height: 81px;
-  left: -20px;
-  top: 310px;
-
-  background: #003459;
-  border-radius: 20px 0 0 20px;
-}
-.right_panel_btn .icon {
-  font-size: 1.6rem;
-  color: #fff;
-}
 .right_items {
-  border-radius: 20px;
   display: flex;
+  /* background: rgba(0, 52, 89, 0.89); */
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-direction: column;
-  width: 140px;
+  /* width: 100%; */
   height: 600px;
+  overflow-y: scroll;
 }
 .right_item {
-  width: 80%;
-  height: 70px;
   display: flex;
-  margin-left: 15px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #ffffff;
-  border: 1px solid #003459;
-  border-radius: 15px;
-  color: #003459;
-  font-size: 1.2rem;
+  width: 81px;
+  height: 109px;
+  left: 1161px;
+  top: 114px;
+  margin-top: 15px;
+  /* ICON COLOR 2 */
+
+  background: #f1f1f1;
+  /* Secondary Box */
+
+  border: 1px solid #3a3a3a;
+  /* display: none; */
+}
+.right_items .item {
+  width: 81px;
+  height: 109px;
 }

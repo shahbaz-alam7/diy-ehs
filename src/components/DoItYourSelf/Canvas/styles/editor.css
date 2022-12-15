@@ -1,0 +1,138 @@
+.editor {
+  position: fixed;
+  width: 79.1vw;
+  left: 320px;
+  height: 50px;
+  background: rgb(0, 52, 89);
+  background: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 14px;
+}
+.editor-child {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+}
+.icon-div {
+  padding: 5px;
+  position: relative;
+  color: black;
+}
+.tooltip {
+  position: absolute;
+  top: 33px;
+  visibility: hidden;
+  font-size: 15px;
+  /* width: 60px; */
+  color: #fff;
+  background-color: blue;
+  background-color: rgb(69, 68, 68);
+  left: -15px;
+  padding: 0px 5px 3px 5px;
+}
+.icon-div:hover .tooltip {
+  transition-delay: 2s;
+  opacity: 1;
+  visibility: visible;
+}
+.back-forward {
+  width: 70px;
+}
+.editor .icon {
+  font-size: 1.5rem;
+}
+.editor .flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.editor .landscape-pic {
+  /* -webkit-transform: scaleX(-1); */
+  transform: rotate(90deg);
+}
+.triangle {
+  position: absolute;
+  top: 27px;
+  left: 5px;
+  background-color: #fff;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  padding: 0;
+  border-bottom: 10px solid rgb(69, 68, 68);
+}
+/* -----------------------Font ------------------------ */
+
+/* ===================font family ================= */
+.font-family-tool div[id^="font-picker"] {
+  background: #ffffff !important;
+  border: 1px solid #003459;
+  border-radius: 25px;
+  /* Side Bar text color */
+  height: 36px;
+  padding-top: 3px;
+  width: 180px;
+  border: 1px solid #afafaf;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+  border-radius: 2px;
+}
+.font-family-tool div[id^="font-picker"] .dropdown-button {
+  /* padding: 0 20px !important; */
+  /* margin-top: 8.5px !important; */
+  background: transparent !important;
+}
+
+.font-family-tool div[id^="font-picker"] .dropdown-button:hover,
+.font-family-tool div[id^="font-picker"] .dropdown-button:focus {
+  background: transparent !important;
+}
+/* -----------------------Font ------------------------ */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 7px;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+  margin-left: 1rem;
+  padding: 0 12px;
+  border: 1px solid #afafaf;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  outline: none;
+  height: 40px;
+
+  padding-right: 2rem;
+}
+
+.editor-child .css-i4bv87-MuiSvgIcon-root {
+  width: 35px !important;
+  height: 35px !important;
+}
+.hex-code {
+  border: 1px solid #afafaf;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  padding-top: 7px;
+  width: 60px;
+}
+.shape-tools img {
+  width: 20px;
+  margin-top: 10px;
+  height: 20px;
+}
+.shape-tools figure {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border: 1px solid #afafaf;
+  border-radius: 2px;
+}
