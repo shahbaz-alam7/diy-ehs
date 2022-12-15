@@ -6,7 +6,11 @@ import FontSize from "./FontSize";
 // import RangePicker from "./fontComponents/RangePicker";
 import { useDispatch } from "react-redux";
 import { setText } from "../../../../reduxStore/actions/pageActions";
-const HeaderPage = React.forwardRef(({ index, ele, refValue }) => {
+
+// tools
+import Editor from "./Editor";
+import "../styles/editor.css";
+const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
   const dispatch = useDispatch();
   const [finalFont, setFinalFont] = useState(ele.family);
   let initialFont = Number(ele.fontSize.slice(0, ele.fontSize.length - 2));
@@ -34,22 +38,23 @@ const HeaderPage = React.forwardRef(({ index, ele, refValue }) => {
 
   return (
     <div
-    className="header-page"
+      className="header-page"
       onClick={(event) => {
         event.stopPropagation();
       }}
     >
-      <FontSize
+      <Editor activeToolBar={tool} />
+      {/* <FontSize
         finalFontSize={finalFontSize}
         setFinalFontSize={setFinalFontSize}
       />
-      <FontPickerComp finalFont={finalFont} setFinalFont={setFinalFont} />
+       <FontPickerComp finalFont={finalFont} setFinalFont={setFinalFont} />
       <ColorPalette
         index={index}
         actionType={setText}
         isTemplateColor={false}
         currentColor={ele.color}
-      />
+      /> */}
     </div>
   );
 });

@@ -1,12 +1,12 @@
 .header-page {
   display: flex;
   flex-direction: row;
-  left: -20vw;
-  position: absolute;
-  top: 0;
+  left: 40vw;
+  position: fixed;
+  top: 10vh;
 
   width: 400px;
-  background-color: rgb(117, 141, 117);
+  /* background-color: rgb(117, 141, 117); */
 }
 
 .swatch {

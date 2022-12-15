@@ -11,6 +11,18 @@
   position: fixed;
   width: 85px;
   top: 10vh;
+  background: rgb(0, 52, 89);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 52, 89, 1) 0%,
+    rgba(3, 116, 196, 1) 87%
+  );
+  /* background: rgb(3, 122, 207);
+  background: linear-gradient(
+    0deg,
+    rgba(3, 122, 207, 1) 0%,
+    rgba(0, 52, 89, 1) 87%
+  ); */
 }
 .sidepanel_container .menu {
   width: 100%;
@@ -18,7 +30,8 @@
   display: flex;
   z-index: 1000;
   align-items: center;
-  justify-content: space-evenly;
+  /* padding-top: 20px; */
+  /* justify-content: space-evenly; */
   flex-direction: column;
 }
 .toggle-container-side {
@@ -28,7 +41,7 @@
   position: absolute;
   width: 235px;
   left: 85px;
-  background: #3a3a3a;
-  border-radius: 0px 10px 0px 0px;
+  background: #081a26;
+  /* border-radius: 0px 10px 0px 0px; */
   overflow-y: scroll;
 }
