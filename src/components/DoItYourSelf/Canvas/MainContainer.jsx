@@ -13,18 +13,6 @@ const MainContainer = ({ openSlider, addHeader }) => {
       style={openSlider ? styleSliderOpen : styleSliderClose}
     >
       {openSlider}
-      <div
-        style={{
-          backgroundColor: "red",
-          width: "65vw",
-          height: "6.7vh",
-          // position: "fixed",
-          right: "0vw",
-        }}
-      >
-        {/* <FontStyleComp /> */}
-        header
-      </div>
       <Frame addHeader={addHeader} />
     </div>
   );

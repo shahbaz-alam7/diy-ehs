@@ -8,6 +8,7 @@ import ImageComponent from "../Canvas/ImageComponent";
 import Text from "../Canvas/Text";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
+import { IoSearchSharp } from "react-icons/io5";
 const StyledRnd = styled(Rnd)`
   &:hover {
     border: 1px solid blue;
@@ -61,6 +62,43 @@ const TemplateOption = ({ setOpenSlider }) => {
       >
         close
       </button>
+      <div className="search-div">
+        <IoSearchSharp className="icon" />{" "}
+        <input
+          type="text"
+          name="searcg_template"
+          placeholder="Search templates"
+        />
+      </div>
+      <div className="categories-div">
+        <p className="heading">Categories</p>
+
+        <div className="category">
+          <p>Posters</p>
+        </div>
+        <div className="category">
+          <p>Floor Graphics</p>
+        </div>
+        <div className="category">
+          <p>Signages</p>
+        </div>
+        <div className="category">
+          <p>Utility Stickers</p>
+        </div>
+      </div>
+      <div className="recent-designs">
+        <p className="heading">Recent Design</p>
+        <div className="designs"></div>
+        <div className="designs"></div>
+        <div className="designs"></div>
+      </div>
+      <div className="all-categories">
+        <p className="heading">All Categories</p>
+        <div className="designs"></div>
+        <div className="designs"></div>
+        <div className="designs"></div>
+        <div className="designs"></div>
+      </div>
       <div>
         {templateData.map((ele) => {
           return (
