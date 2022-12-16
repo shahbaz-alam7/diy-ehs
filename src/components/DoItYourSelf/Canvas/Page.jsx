@@ -17,7 +17,7 @@ const Page = ({ addHeader }) => {
 
   const data = useSelector((state) => {
     console.log(state,"----------------------");
-    return state.projects.pages[0];
+    return state.projects.pages;
   });
   console.log("my data", data);
   let color = data ? data.backgroundColor : "green";
@@ -38,23 +38,20 @@ const Page = ({ addHeader }) => {
   useEffect(() => {
     console.log(headerIndex);
   }, [headerIndex]);
-  data.logos.reverse();
+
+  
   const toolsAvailable={image:"Image-Tools", text:"Font-Tools", canvas:"Dimesion-Tools",shapes:"Shapes-Tools"}
               // tool={"Font-Tools"}
               // tool={"Dimesion-Tools"}
               // tool={"Shapes-Tools"}
-
+              data.forEach(element => {
+                element.logos.reverse();
+              });
+              
   const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);            
   return (
     <>
-     {activeTool==="Dimesion-Tools"?(
-            <HeaderPage
-              index={0}
-              ele={{}}
-              refValue={pageRef}
-              tool={activeTool}
-            />
-           ) : null}
+     
       <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
@@ -64,9 +61,18 @@ const Page = ({ addHeader }) => {
               clipPath: frames[data.frame.frameNumber],
             }}
           >  */}
+          {data.map(page=>{
+            return <>{activeTool==="Dimesion-Tools"?(
+              <HeaderPage
+                index={0}
+                ele={{}}
+                refValue={pageRef}
+                tool={activeTool}
+              />
+             ) : null}
             <Container>
               
-              {data.logos.map((ele, index) => {
+              {page.logos.map((ele, index) => {
               
                 return (
                   <ImageComponent index={index} ele={ele} 
@@ -77,7 +83,7 @@ const Page = ({ addHeader }) => {
                 );
               })}
 
-              {data.texts.map((ele, index) => {
+              {page.texts.map((ele, index) => {
                 return (
                   <Text
                     setText={setText}
@@ -91,9 +97,12 @@ const Page = ({ addHeader }) => {
                     setActiveTool={setActiveTool}
                     toolsAvailable={toolsAvailable}
                   />
+                  
                 );
               })}
             </Container>
+            </>
+            })}
           {/* </div>
         </div>
       </div> */}
