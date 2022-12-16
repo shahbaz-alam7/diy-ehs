@@ -44,9 +44,8 @@
   margin: auto;
   text-align: left;
 }
-.template_container .categories-div,
-.recent-designs,
-.all-categories {
+.template_container .categories-div-panel,
+.recent-designs{
   padding-left: 6px;
 }
 .template_container .category {
