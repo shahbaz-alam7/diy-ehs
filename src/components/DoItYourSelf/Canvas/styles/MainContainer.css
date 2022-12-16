@@ -1,8 +1,14 @@
-.main_container{
-    width: 100vw;
-    min-height: 100vh;
-    background-color: black;
-    display: flex;
-    
-
+.main_container {
+  width: 35vw;
+  margin-left: 380px;
+  min-height: 100vh;
+  background-color: black;
+  display: flex;
+  width: 35vw;
+  margin-top: 50px;
+  margin: auto;
+  margin-top: 77px;
+  min-height: 100vh;
+  background-color: black;
+  display: flex;
 }

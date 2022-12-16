@@ -30,27 +30,28 @@ const Page = ({ addHeader }) => {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: white;
+    background-color: green;
   `;
   const [headerIndex, setHeaderIndex] = useState(-1);
   useEffect(() => {
     console.log(headerIndex);
   }, [headerIndex]);
-
+  data.logos.reverse();
   return (
     <>
-      {/* <div className='Page_main_container' ref={pageRef}> */}
-      {/* <div className="frame-viewer" ref={pageRef}>
+      <div className='Page_main_container' ref={pageRef}>
+       {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
           <div
             id="frame"
             style={{
               clipPath: frames[data.frame.frameNumber],
             }}
-          > */}
+          >  */}
             <Container>
+              
               {data.logos.map((ele, index) => {
-                {console.log(ele)}
+              
                 return (
                   <ImageComponent index={index} ele={ele} key={ele.index} />
                 );
@@ -73,7 +74,7 @@ const Page = ({ addHeader }) => {
           {/* </div>
         </div>
       </div> */}
-      {/* </div> */}
+      </div>
       <Download pageRef={pageRef} />
     </>
   );

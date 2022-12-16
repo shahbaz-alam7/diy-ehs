@@ -19,8 +19,8 @@ function ImageComp ({img,zindex}){
       height: 100%;
       background-image: url(${img});
       background-size: 100% 100%;
-      position:absolute;
-      z-index:zindex
+      
+      
     `;
     return <Image>{JSON.stringify}</Image>;
 }
@@ -34,6 +34,7 @@ const ImageComponent = ({ele, index}) => {
          dispatch(setLogo({propObject:ImageElement.current, index, pageIndex:0}));
       }
     function onResize(event, direction, ref, delta, index) {
+      
         const { width, height } = ref.style;
         ImageElement.current.width=width;
         ImageElement.current.height=height;
@@ -42,26 +43,36 @@ const ImageComponent = ({ele, index}) => {
       
       function onDragStop(e, d , index) {
         const { x, y } = d;
+        console.log(d)
         ImageElement.current.x=x;
         ImageElement.current.y=y;
-        captureImage();
+        console.log(x,"----",y)
+        // captureImage();
       }
-      let zindex =100;
+   
+      function getNumber(str){
+        let a = str.split('p')
+        let num = Number(a[0]);
+        return num
+      }
   return (
     <>
       <StyledRnd
                 className="d-flex"
-                default={{  x: ele.x,
-                    y: ele.y,
-                    width:ele.width,
-                    height: ele.height}}
+                default={{
+                  x: getNumber(ele.x),
+                  y: getNumber(ele.y),
+                  width: getNumber(ele.width),
+                  height:getNumber(ele.height),
+                }}
                 onResize={onResize}
                 onDragStop={onDragStop}
                 lockAspectRatio={true}
-                key={ele.id}
+                key={ele._id}
             >
-            <ImageComp  img={ele.logoURL} zindex={zindex-index} />
+            <ImageComp  img={ele.logoURL}/>
     </StyledRnd>
+    
     </>
   )
 }
