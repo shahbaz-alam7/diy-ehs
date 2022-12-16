@@ -1,0 +1,103 @@
+.order-page {
+  text-align: left;
+  width: 85%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.design-page {
+}
+.img-box {
+  width: 233.87px;
+  height: 316px;
+  background: #f1f1f1;
+  border: 1px solid #3a3a3a;
+}
+.btn-box {
+  text-align: center;
+}
+.btn-box button:first-child {
+  border: 1px solid #003459;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  color: #003459;
+  margin: 7px;
+}
+.btn-box button:last-child {
+  margin: 7px;
+  border-radius: 5px;
+  background-color: #003459;
+  width: 100px;
+  border: none;
+  height: 40px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+}
+.description-box {
+  /* background-color: gray; */
+  width: 650px;
+}
+.order-page .title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 15px;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.order-page .cat-name span:first-child {
+  /* background-color: green; */
+  margin-right: 35px;
+}
+.order-page select {
+  height: 20px;
+  border: 0.5px solid #3a3a3a;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: -3px;
+  margin-left: 1rem;
+  outline: none;
+  margin-top: 15px;
+}
+.order-page .material-desc {
+  padding-left: 102px;
+  /* background-color: rebeccapurple; */
+  display: flex;
+  width: 250px;
+  margin-top: 15px;
+}
+
+.order-page img {
+  margin-right: 10px;
+}
+.order-page .qty div{
+  display: flex;
+  color: red;
+  width: 125px;
+  max-width: 135px;
+  margin: 15px 0;
+  justify-content: space-between;
+}
+.summary-box {
+  width: 295px;
+  height: 397px;
+  left: 860px;
+  top: 121px;
+
+  background: #ffffff;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
