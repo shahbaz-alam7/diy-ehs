@@ -2,6 +2,30 @@ import axios from "axios";
 
 
 
+export const getAllText =()=>{
+  return async dispatch =>{
+      const getText = async () => {
+        
+              return await axios
+                .post(`http://localhost:8000/diy/getAllText`)
+                .then((res) => res)
+                .catch((err) => {
+                  console.log(err);
+                  return [];
+                });
+          };
+          const res = await getText();
+          console.log(res,"-----------------");
+          let text = res.data.data.texts
+          console.log("text====", text);
+          dispatch({
+            type: "TEXT",
+            payload: text,
+          });
+
+      }
+  }
+
 export const getCategory =()=>{
     return async dispatch =>{
         const getCat = async () => {

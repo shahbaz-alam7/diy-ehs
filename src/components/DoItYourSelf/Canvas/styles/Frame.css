@@ -4,7 +4,7 @@
     /* border: 1px solid white; */
 }
 .frame_main_container{
-    background-color: black;
+    /* background-color: black; */
     width:400px;
     min-height: 80vh;
     display: flex;

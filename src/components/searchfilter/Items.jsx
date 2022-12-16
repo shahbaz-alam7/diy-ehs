@@ -13,20 +13,7 @@ const Items = ({ itemName, setName ,loadPage}) => {
   const categoryTemplates = filter.categoryTemplates;
   console.log(categoryTemplates,"00000")
   const signalWords = data[0].signals;
-  const Container = styled.div`
-  
-    width: 240px;
-    height: 380px;
-    border-radius:15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position:relative;
-    top:-50px;
-    left:-2px;
-    background-color: white;
-    border:1px solid black
-  `;
+ 
   return (
     <>
       <div className="items-box ">

@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import {getCategory,getCategoryTemplates} from "../../reduxStore/actions/filterAction"
+
 const Home = ({ setName }) => {
   const [categroyId , setCategoryId] =useState();
   const dispatch = useDispatch();

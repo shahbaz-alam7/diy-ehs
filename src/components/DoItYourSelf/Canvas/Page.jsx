@@ -30,7 +30,8 @@ const Page = ({ addHeader }) => {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: green;
+    background-color:white;
+    box-shadow: 0 0 10px gray;
   `;
   const [headerIndex, setHeaderIndex] = useState(-1);
   useEffect(() => {

@@ -5,11 +5,17 @@ import {
   getText,
   getTextTemplate,
 } from "../../../../reduxStore/actions/pageActions";
+import {getAllText} from "../../../../reduxStore/actions/filterAction"
 import TextTemplate from "../../FakeData/data/TextTemplate";
+import { useEffect } from "react";
 const TextStyle = ({ setOpenSlider, setAddHeader }) => {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
-  console.log(data, "inside text");
+  useEffect(()=>{
+    dispatch(getAllText());
+  },[])
+  let texts =data.projects.filter.text;
+  console.log(texts, "inside text");
   const project = useSelector((state) => state.projects);
   const pageIndex = project.currentPage;
   return (
@@ -39,7 +45,7 @@ const TextStyle = ({ setOpenSlider, setAddHeader }) => {
       <button>Add a little bit of body text</button>
 
       <div>
-        {TextTemplate.map((ele) => {
+        {texts.map((ele) => {
           return (
             <div
               style={{ cursor: "pointer" }}
@@ -52,7 +58,7 @@ const TextStyle = ({ setOpenSlider, setAddHeader }) => {
                 );
               }}
             >
-              {ele.id}
+              <p style={{width:"100%",fontSize:"18px", height:"50px", family:`${ele.family}` , }}><i>{ele.text}</i></p>
             </div>
           );
         })}
