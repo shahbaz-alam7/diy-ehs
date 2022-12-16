@@ -7,15 +7,16 @@ import ShapesTools from "./tools/ShapesTools";
 import ImageTools from "./tools/ImageTools";
 import UndoRedoTool from "./tools/UndoRedoTool";
 import OtherTools from "./tools/OtherTools";
-const Editor = ({ activeToolBar, finalFont, setFinalFont, finalFontSize, setFinalFontSize}) => {
+const Editor = ({ tool, finalFont, setFinalFont, finalFontSize, setFinalFontSize}) => {
+  console.log(tool,"psdfkojsdafiajsdjf")
   return (
     <div className="editor">
       <div className="editor-child">
         <UndoRedoTool />
-        {activeToolBar === "Image-Tools" && <ImageTools />}
-        {activeToolBar === "Font-Tools" && <FontTools finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>}
-        {activeToolBar === "Dimesion-Tools" && <DimensionTools />}
-        {activeToolBar === "Shapes-Tools" && <ShapesTools />}
+        {tool === "Image-Tools" && <ImageTools />}
+        {tool === "Font-Tools" && <FontTools finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>}
+        {tool === "Dimesion-Tools" && <DimensionTools />}
+        {tool === "Shapes-Tools" && <ShapesTools />}
         <OtherTools />
       </div>
     </div>

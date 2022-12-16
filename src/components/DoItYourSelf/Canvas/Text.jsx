@@ -18,7 +18,8 @@ const StyledRnd = styled(Rnd)`
   }
 `;
 const TextDisplayer = React.forwardRef(
-  ({ setHeaderIndex, index, ele, color, headerIndex }) => {
+  ({ setHeaderIndex, index, ele, color, headerIndex , activeTool,setActiveTool,toolsAvailable}) => {
+    console.log(activeTool,"SDsddddddddddddddd");
     const TextObject = useRef(ele);
     let dispatch = useDispatch();
     const [ref, setRefVal] = useState(null);
@@ -52,19 +53,16 @@ const TextDisplayer = React.forwardRef(
     return (
       TextObject && (
         <>
-          {headerIndex === index ? (
+          {activeTool==="Font-Tools"?(
             <HeaderPage
               setHeaderIndex={setHeaderIndex}
               index={index}
               ele={ele}
               headerIndex={headerIndex}
               refValue={ref}
-              // tool={"Image-Tools"}
-              tool={"Font-Tools"}
-              // tool={"Dimesion-Tools"}
-              // tool={"Shapes-Tools"}
+              tool={activeTool}
             />
-          ) : null}
+           ) : null}
           <StyledRnd
             className="d-flex"
             default={{ x: getNumber(ele.x), y: getNumber(ele.y) }}
@@ -75,7 +73,7 @@ const TextDisplayer = React.forwardRef(
             // }
             onMouseDown={(event) => {
               event.stopPropagation();
-              setHeaderIndex(index);
+              setActiveTool(toolsAvailable.text)
             }}
             key={ele.id}
           >

@@ -1,3 +1,4 @@
+import Navbar from "./components/DoItYourSelf/Commons/Navbar";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -5,18 +6,19 @@ import "./App.css";
 import { getPageFromTemplate } from "./reduxStore/actions/pageActions";
 import Home from "./components/DoItYourSelf/Home";
 import Main from "./components/searchfilter/Main";
-import Navbar from "./components/DoItYourSelf/Commons/Navbar";
 function App() {
-  const [page, loadPage] = useState(true);
+  const [diypage,loadPage] =useState(true);
+  function loadPageData(templateId) {
+    dispatch(getPageFromTemplate({ templateId: templateId }));
+    loadPage(true);
+  }
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPageFromTemplate({ templateId: "908989" }));
-  }, []);
+  useEffect(() => {}, []);
   return (
     // <div className="App" style={{backgroundColor:"yellow",width:"400px", height:"400px"}}>
     <div className="App">
       <Navbar />
-      {page ? <Home /> : <Main loadPage={loadPage} />}
+      {diypage ? <Home /> : <Main loadPageData={loadPageData} />}
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef,useEffect , useState} from 'react'
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
 import { useDispatch } from 'react-redux';
 import {setLogo} from "../../../reduxStore/actions/pageActions";
+import HeaderPage from './header/HeaderPage';
 const StyledRnd = styled(Rnd)`
 &:hover {
   border: 1px solid blue;
@@ -13,7 +14,8 @@ const StyledRnd = styled(Rnd)`
 `;
 
 
-function ImageComp ({img,zindex}){
+function ImageComp ({img,setRefVal}){
+  let ref =useRef(null);
     const Image = styled.div`
       width: 100%;
       height: 100%;
@@ -22,11 +24,18 @@ function ImageComp ({img,zindex}){
       
       
     `;
-    return <Image>{JSON.stringify}</Image>;
+    useEffect(() => {
+      if (!(ref === null)) {
+        setRefVal(ref);
+      }
+    }, [ref]);
+   
+    return <Image ref={ref}>{JSON.stringify}</Image>;
 }
 
 
-const ImageComponent = ({ele, index}) => {
+const ImageComponent = ({ele, index, activeTool,setActiveTool,toolsAvailable}) => {
+  const [ref, setRefVal] = useState(null);
     const dispatch =useDispatch();
     const ImageElement = useRef(ele);
     const captureImage =()=>{
@@ -57,6 +66,14 @@ const ImageComponent = ({ele, index}) => {
       }
   return (
     <>
+    {activeTool==="Image-Tools"?(
+            <HeaderPage
+              index={index}
+              ele={ele}
+              refValue={ref}
+              tool={activeTool}
+            />
+           ) : null}
       <StyledRnd
                 className="d-flex"
                 default={{
@@ -69,8 +86,12 @@ const ImageComponent = ({ele, index}) => {
                 onDragStop={onDragStop}
                 lockAspectRatio={true}
                 key={ele._id}
+                onMouseDown={(event) => {
+                  event.stopPropagation();
+                  setActiveTool(toolsAvailable.image)
+                }}
             >
-            <ImageComp  img={ele.logoURL}/>
+            <ImageComp  img={ele.logoURL} setRefVal={setRefVal}/>
     </StyledRnd>
     
     </>

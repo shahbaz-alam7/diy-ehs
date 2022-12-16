@@ -7,7 +7,7 @@ import Frames from "../SideBarSlider/Frames";
 import LogosOption from "../SideBarSlider/LogosOption";
 
 import { HiOutlineTemplate } from "react-icons/hi";
-import { IoShapesOutline } from "react-icons/io5";
+import { IoShapesOutline, IoArrowBack } from "react-icons/io5";
 import { GoCloudUpload } from "react-icons/go";
 import { SlFrame } from "react-icons/sl";
 import { MdTextFields, MdPhotoSizeSelectLarge } from "react-icons/md";
@@ -74,6 +74,14 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
       </div>
       {openSlider && (
         <div className="toggle-container-side ">
+          <div className="back-div">
+            <IoArrowBack
+              className="back-btn"
+              onClick={() => {
+                setOpenSlider(false);
+              }}
+            />
+          </div>
           {sliderName === "Template" && (
             <TemplateOption setOpenSlider={setOpenSlider} />
           )}
@@ -85,14 +93,14 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
               setAddHeader={setAddHeader}
             />
           )}
-          {sliderName === "Stickers" && (
-            <LogosOption setOpenSlider={setOpenSlider} />
-          )}
           {sliderName === "Canvas Size" && (
             <CanvasSize setOpenSlider={setOpenSlider} />
           )}
           {sliderName === "Uploads" && (
             <UploadFile setOpenSlider={setOpenSlider} />
+          )}
+          {sliderName === "Stickers" && (
+            <LogosOption setOpenSlider={setOpenSlider} />
           )}
         </div>
       )}
