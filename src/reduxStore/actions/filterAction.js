@@ -1,5 +1,28 @@
 import axios from "axios";
 
+export const getAllLogo =()=>{
+  return async dispatch =>{
+      const getLogo = async () => {
+        
+              return await axios
+                .post("http://localhost:8000/diy/getLogos")
+                .then((res) => res)
+                .catch((err) => {
+                  console.log(err);
+                  return [];
+                });
+          };
+          const res = await getLogo();
+          console.log(res,"-----------------");
+          let logo = res.data.data.logos
+          console.log("logo====", logo);
+          dispatch({
+            type: "LOGO",
+            payload: logo,
+          });
+
+      }
+  }
 
 
 export const getAllText =()=>{

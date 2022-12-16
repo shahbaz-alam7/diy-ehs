@@ -2,7 +2,8 @@
 let initialState ={
     category:[],
     categoryTemplates:[],
-    text:[]   
+    text:[]   ,
+    logo:[]
 }
 
 const handlePage = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const handlePage = (state = initialState, action) => {
         return {...state, categoryTemplates:action.payload}
         case 'TEXT' :
             return {...state, text:action.payload};
+        case 'LOGO' :
+            return {...state, logo:action.payload};
         default: return {...state};
 
     }
