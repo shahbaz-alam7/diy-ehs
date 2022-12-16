@@ -66,7 +66,7 @@ const TextDisplayer = React.forwardRef(
             />
           ) : null}
           <StyledRnd
-            // className="d-flex"
+            className="d-flex"
             default={{ x: getNumber(ele.x), y: getNumber(ele.y) }}
             bounds="parent"
             // onDragStop={(e, d) => onDragStop(e, d, index)}
@@ -98,7 +98,7 @@ const TextComponent = React.forwardRef(
     let weight = info.isBold ? 900 : 500;
     let style = info.isItalic ? "italic" : "normal";
     let textdecoration = info.underline ? "underline" : "none";
-
+    let width ="200px";
     const TextField = styled.div`
       font-family: ${info.family};
       font-size: ${info.fontSize};
@@ -110,7 +110,7 @@ const TextComponent = React.forwardRef(
       /* line-height: ${info.lineSpacing}; */
       /* line-height: 10px; */
       text-decoration: ${textdecoration};
-      
+      width${width},      
       &:hover {
         /* background-color: rgba(${backgroundColor}, 0.1); */
       }
