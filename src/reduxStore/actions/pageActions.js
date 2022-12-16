@@ -8,27 +8,33 @@ import store from "../store";
 import frames from "../../components/DoItYourSelf/FakeData/data/framesShape";
 import { useState } from "react";
 
-export const getPageFromTemplate=({templateID})=>{
+export const getPageFromTemplate=({templateId})=>{
     return async dispatch =>{
-        const getPage = async () => {
-          return await axios
-                    .post(`http://localhost:8000/diy/createPageFromTemplate`,{
-                      templateID:templateID
-                    })
-                    .then((res) => res)
-                    .catch((err) => {
-                      console.log(err);
-                      return [];
-                    });
-        } 
-        const res = await getPage();
-              let page = res.data.data;
-              console.log("page====", page);
-              dispatch({
-                type: "ADD_PAGE",
-                payload: {page:page},
+            
+            let d = {
+                template:templateId
+            }
+            //console.log(d)
+            const response = await fetch(`http://localhost:8000/diy/diycreateProject`, {
+                method: "POST",
+                body: JSON.stringify(d),
+                headers: { "Content-Type": "application/json",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVmODAwMDJiYjg5MjJiMjRkMGE3YzciLCJSb2xlIjoidXNlciIsImlhdCI6MTY3MTE5ODQ5MiwiZXhwIjoxNjc0Nzk4NDkyfQ.3UfDH7xUj2ezGnvAk-LFWHw2FgHoZkUQg1DV2DSb_hw"
+             },
               });
-      }
+              const data = await response.json();
+              // //console.log(data);
+            
+              if(data.status===200)
+                {
+                    let page = data.data.result[0].pageArray;
+                    console.log("page====", page,data);
+                    dispatch({
+                        type: "ADD_PAGE",
+                        payload: {page:page},
+                      });
+                }
+            }
     }
 export const setFrame =({frameNumber})=>{
     return async dispatch =>{

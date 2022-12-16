@@ -20,7 +20,7 @@ const handlePage = (state = initialState, action) => {
     
     let page =null;
     switch (action.type) {
-        case 'ADD_PAGE':return [...state,action.payload.page];
+        case 'ADD_PAGE':return [...action.payload.page];
         case 'CREATE_EMPTY_PAGE':
                        
                         return [...state, pageEmpty];
