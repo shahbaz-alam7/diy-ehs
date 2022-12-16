@@ -13,13 +13,14 @@ const StyledRnd = styled(Rnd)`
 `;
 
 
-function ImageComp ({img}){
+function ImageComp ({img,zindex}){
     const Image = styled.div`
       width: 100%;
       height: 100%;
       background-image: url(${img});
       background-size: 100% 100%;
       position:absolute;
+      z-index:zindex
     `;
     return <Image>{JSON.stringify}</Image>;
 }
@@ -45,6 +46,7 @@ const ImageComponent = ({ele, index}) => {
         ImageElement.current.y=y;
         captureImage();
       }
+      let zindex =100;
   return (
     <>
       <StyledRnd
@@ -58,7 +60,7 @@ const ImageComponent = ({ele, index}) => {
                 lockAspectRatio={true}
                 key={ele.id}
             >
-            <ImageComp  img={ele.imageUrl} />
+            <ImageComp  img={ele.logoURL} zindex={zindex-index} />
     </StyledRnd>
     </>
   )

@@ -13,13 +13,13 @@ const Frame = ({addHeader}) => {
 
   const dispatch = useDispatch();
   const addPageHandler =()=>{
-    console.log(pageInfo, currentPage,pageInfo[currentPage].template.id);
+    console.log(pageInfo, currentPage,pageInfo[currentPage][0].template.id);
     let pageNo =currentPage;
     dispatch({
       type:'CREATE_EMPTY_PAGE',
       payload:{currentPage:pageNo+1}
      })
-    dispatch(addNewCopyOfPage(pageInfo[pageNo-1].template.id))
+    dispatch(addNewCopyOfPage(pageInfo[pageNo-1][0].template.id))
     
   }
   const [openInput, setOpenInput] =useState(false);

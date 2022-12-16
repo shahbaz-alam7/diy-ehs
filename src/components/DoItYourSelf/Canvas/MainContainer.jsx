@@ -10,7 +10,11 @@ const MainContainer = ({openSlider,addHeader}) => {
     <div className='main_container'style={openSlider?styleSliderOpen:styleSliderClose}>
       {openSlider}
       <div style={{backgroundColor:"white", width:"65vw", height:"6.7vh", position:"fixed", right:"0vw"}}>
-        header
+        <div style={{position:"absolute", top:"10px", cursor:"pointer"}}>
+          <span style={{color:"red", border:"1px solid black", margin:"5px"}}>undo</span>
+          <span style={{color:"blue",border:"1px solid black",margin:"5px"}}>redo</span>
+        </div>
+        
       </div>
       <Frame addHeader={addHeader}/>
       

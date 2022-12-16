@@ -48,8 +48,9 @@ const TextDisplayer = React.forwardRef(({setHeaderIndex, index, ele,color,header
       return TextObject &&  (
     <>
      {headerIndex===index?<HeaderPage setHeaderIndex={setHeaderIndex} index={index} ele={ele} headerIndex={headerIndex} refValue={ref} />:null}
+     {console.log(ele.x)}
      <StyledRnd className="d-flex"
-          default={{  x: ele.x,
+          default={{  x: "420",
           y: ele.y}}
           bounds="parent"
           onDragStop={(e, d )=>onDragStop(e, d ,index)}
@@ -93,7 +94,7 @@ const TextComponent= React.forwardRef(({info, setRefVal, backgroundColor, index,
     useEffect(()=>{
       if(!(ref===null)){
           setRefVal(ref);
-      }
+      } 
     },[ref])
     function handleChange(event){
       console.log(ref);

@@ -10,14 +10,12 @@ import Download from "./Download";
 import frames from "../FakeData/data/framesShape";
 import "../SideBarSlider/styles/frames.css";
 const Page = ({ addHeader }) => {
+  console.log("kdsjafksdfknsdkfnianjksndfkjn");
   const pageRef = useRef(null);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTemplate({ templateId: 1201, pageIndex: 0 }));
-  }, []);
+  
 
   const data = useSelector((state) => {
-    console.log(state);
+    console.log(state,"----------------------");
     return state.projects.pages[0];
   });
   console.log("my data", data);
@@ -52,6 +50,7 @@ const Page = ({ addHeader }) => {
           > */}
             <Container>
               {data.logos.map((ele, index) => {
+                {console.log(ele)}
                 return (
                   <ImageComponent index={index} ele={ele} key={ele.index} />
                 );
