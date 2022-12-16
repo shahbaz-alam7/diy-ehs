@@ -43,7 +43,7 @@ const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
         event.stopPropagation();
       }}
     >
-      <Editor activeToolBar={tool} />
+      <Editor activeToolBar={tool} finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>
       {/* <FontSize
         finalFontSize={finalFontSize}
         setFinalFontSize={setFinalFontSize}

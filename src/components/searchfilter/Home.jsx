@@ -10,14 +10,18 @@ import Landscape from "./helper/Landscape";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
+import {getCategory,getCategoryTemplates} from "../../reduxStore/actions/filterAction"
+
 const Home = ({ setName }) => {
   const [categroyId , setCategoryId] =useState();
   const dispatch = useDispatch();
+ 
   let filter= useSelector(state=>state.projects.filter);
   let category=filter.category;
-  console.log("jkdsfjkgsdfgjdfgjk categroy",category);
+  console.log("jkdsfjkgsdfgjdfgjk categroy",category, filter);
   useEffect(()=>{
-    dispatch({type:"CATEGORY"})
+    
+    dispatch(getCategory())
   },[])
   return (
     <div className="div-home-container">
@@ -28,7 +32,7 @@ const Home = ({ setName }) => {
           
           {category.map(ele=>{
             
-            return <div className="category" onClick={() => {dispatch({type:"CATEGORY_TEMPALTES", payload :{categoryid:ele.id}});setName(ele.categoryName)}}>
+            return <div className="category" onClick={() => {dispatch(getCategoryTemplates({categoryid:ele._id}));setName(ele.categoryName)}}>
                       <img src={ele.categoryLogo} alt="" />
                       <p className="caption">{ele.categoryName}</p>
                     </div>

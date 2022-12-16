@@ -40,6 +40,7 @@
   left: 0;
   text-align: left;
   visibility: hidden;
+  /* display: none; */
   background: #fff;
   z-index: 9999900;
   width: 0px;
@@ -50,6 +51,7 @@
 .active .nav-panel {
   width: 170px;
   visibility: visible;
+  /* display: block; */
   /* border-right: 1px solid black; */
   transition: all 0.5s linear;
 }
@@ -64,8 +66,12 @@
 .nav-panel .panel {
 }
 .nav-panel .links {
+  display: none;
   margin-top: 10px;
   padding-left: 15px;
+}
+.active .links {
+  display: block;
 }
 .nav-panel .links li {
   font-family: "Roboto";

@@ -11,15 +11,18 @@ const Logos =[
         height:100,
         width:90,
         x:100,
-        y:100
+        y:100,
+        userid:null,
+
     },
     {
         id:1002,
         imageUrl:img2,
         height:100,
         width:90,
-        x:20,
-        y:280
+        x:100,
+        y:100,
+        userid:12231231
     },
     {
         id:1003,

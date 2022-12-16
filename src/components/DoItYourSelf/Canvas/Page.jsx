@@ -10,14 +10,12 @@ import Download from "./Download";
 import frames from "../FakeData/data/framesShape";
 import "../SideBarSlider/styles/frames.css";
 const Page = ({ addHeader }) => {
+  console.log("kdsjafksdfknsdkfnianjksndfkjn");
   const pageRef = useRef(null);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTemplate({ templateId: 1201, pageIndex: 0 }));
-  }, []);
+  
 
   const data = useSelector((state) => {
-    console.log(state);
+    console.log(state,"----------------------");
     return state.projects.pages[0];
   });
   console.log("my data", data);
@@ -32,16 +30,17 @@ const Page = ({ addHeader }) => {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: white;
+    background-color:white;
+    box-shadow: 0 0 10px gray;
   `;
   const [headerIndex, setHeaderIndex] = useState(-1);
   useEffect(() => {
     console.log(headerIndex);
   }, [headerIndex]);
-
+  data.logos.reverse();
   return (
     <>
-      {/* <div className='Page_main_container' ref={pageRef}> */}
+      <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
           <div
@@ -51,7 +50,9 @@ const Page = ({ addHeader }) => {
             }}
           >  */}
             <Container>
+              
               {data.logos.map((ele, index) => {
+              
                 return (
                   <ImageComponent index={index} ele={ele} key={ele.index} />
                 );
@@ -74,7 +75,7 @@ const Page = ({ addHeader }) => {
           {/* </div>
         </div>
       </div> */}
-      {/* </div> */}
+      </div>
       <Download pageRef={pageRef} />
     </>
   );

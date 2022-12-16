@@ -6,14 +6,14 @@ import FontWeight from "../helper/FontWeight";
 import FontComponent from "../helper/FontFamily";
 import ColorPalette from "../ColorPalette";
 import { FiAlignCenter } from "../icons";
-const FontTools = () => {
-  const [finalFont, setFinalFont] = useState("Open Sans");
+const FontTools = ({finalFont,setFinalFont,finalFontSize, setFinalFontSize}) => {
+  //const [finalFont, setFinalFont] = useState("Open Sans");
 
   return (
     <div className="Font-Tools flex">
       <FontComponent finalFont={finalFont} setFinalFont={setFinalFont} />
       <FontWeight />
-      <FontSize />
+      <FontSize finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>
       <ColorPalette />
       <div className="hex-code">
         <p>#000</p>

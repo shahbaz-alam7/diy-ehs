@@ -12,6 +12,8 @@ import { GoCloudUpload } from "react-icons/go";
 import { SlFrame } from "react-icons/sl";
 import { MdTextFields, MdPhotoSizeSelectLarge } from "react-icons/md";
 import { RiStickyNoteLine } from "react-icons/ri";
+import CanvasSize from "../SideBarSlider/CanvasSize";
+import UploadFile from "../SideBarSlider/UploadFile";
 
 const menu = [
   {
@@ -20,7 +22,7 @@ const menu = [
     color: "#494FBF",
   },
   {
-    element: "Shape",
+    element: "Shapes",
     img: <IoShapesOutline className="icon" />,
     color: "#4449A5",
   },
@@ -76,17 +78,21 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
             <TemplateOption setOpenSlider={setOpenSlider} />
           )}
 
+          {sliderName === "Shapes" && <Frames setOpenSlider={setOpenSlider} />}
           {sliderName === "Text" && (
             <TextStyle
               setOpenSlider={setOpenSlider}
               setAddHeader={setAddHeader}
             />
           )}
-          {sliderName === "Background" && (
-            <Frames setOpenSlider={setOpenSlider} />
-          )}
           {sliderName === "Stickers" && (
             <LogosOption setOpenSlider={setOpenSlider} />
+          )}
+          {sliderName === "Canvas Size" && (
+            <CanvasSize setOpenSlider={setOpenSlider} />
+          )}
+          {sliderName === "Uploads" && (
+            <UploadFile setOpenSlider={setOpenSlider} />
           )}
         </div>
       )}

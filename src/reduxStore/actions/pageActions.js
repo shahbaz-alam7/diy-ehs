@@ -1,18 +1,40 @@
 import Template from "../../components/DoItYourSelf/FakeData/data/Templates";
 import Logos from "../../components/DoItYourSelf/FakeData/data/Logos";
 import Svgs from "../../components/DoItYourSelf/FakeData/data/Svgs";
-import Text from "../../components/DoItYourSelf/FakeData/data/Text";
 import TextTemplate from "../../components/DoItYourSelf/FakeData/data/TextTemplate";
+import Text from "../../components/DoItYourSelf/FakeData/data/Text";
+import axios from "axios";
 import store from "../store";
 import frames from "../../components/DoItYourSelf/FakeData/data/framesShape";
 import { useState } from "react";
 
-
+export const getPageFromTemplate=({templateID})=>{
+    return async dispatch =>{
+        const getPage = async () => {
+          return await axios
+                    .post(`http://localhost:8000/diy/createPageFromTemplate`,{
+                      templateID:templateID
+                    })
+                    .then((res) => res)
+                    .catch((err) => {
+                      console.log(err);
+                      return [];
+                    });
+        } 
+        const res = await getPage();
+              let page = res.data.data;
+              console.log("page====", page);
+              dispatch({
+                type: "ADD_PAGE",
+                payload: {page:page},
+              });
+      }
+    }
 export const setFrame =({frameNumber})=>{
     return async dispatch =>{
         let data= store.getState();
         console.log(":current page", data.projects.currentPage);
-        let pageUpdated = data.projects.pages[data.projects.currentPage];
+        let pageUpdated = data.projects.pages[data.projects.currentPage][0];
         console.log(frameNumber,")))))))))))))))0)))))))))))))))))))))");
         pageUpdated.frame.frameNumber=frameNumber;
         dispatch({
@@ -76,7 +98,7 @@ export const setTemplateColor =({backgroundColor, pageIndex})=>{
     return async (dispatch, getState) =>{
         let data= store.getState();
         
-        let page = data.projects.pages[pageIndex];
+        let page = data.projects.pages[pageIndex][0];
        
         page.backgroundColor=backgroundColor;
         console.log("template", page, backgroundColor); 
@@ -103,7 +125,7 @@ export const getLogo =({logoId, pageIndex})=> {
 export const setLogo =({propObject, index, pageIndex}) =>{
     return async dispatch=>{
         let data= store.getState();
-        let logo = data.projects.pages[pageIndex].logos;
+        let logo = data.projects.pages[pageIndex][0].logos;
         logo[index]=propObject;
         console.log(logo);
         dispatch ({
@@ -128,10 +150,14 @@ export const setText =({props, index, pageIndex})=>{
     return async (dispatch, getState) =>{
         let data= store.getState();
         
-        let textArr = data.projects.pages[pageIndex].texts;
+        let textArr = data.projects.pages[pageIndex][0].texts;
         for(const key in props) {
             textArr[index][key] = props[key];
         }
+        dispatch({
+            type:"ADD_TEXT_STACK",
+            payload:{textArr, pageIndex}
+        });
         dispatch({
             type:"UPDATE_TEXTS",
             payload:{textArr, pageIndex}

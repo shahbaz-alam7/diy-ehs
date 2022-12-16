@@ -7,13 +7,13 @@ import ShapesTools from "./tools/ShapesTools";
 import ImageTools from "./tools/ImageTools";
 import UndoRedoTool from "./tools/UndoRedoTool";
 import OtherTools from "./tools/OtherTools";
-const Editor = ({ activeToolBar }) => {
+const Editor = ({ activeToolBar, finalFont, setFinalFont, finalFontSize, setFinalFontSize}) => {
   return (
     <div className="editor">
       <div className="editor-child">
         <UndoRedoTool />
         {activeToolBar === "Image-Tools" && <ImageTools />}
-        {activeToolBar === "Font-Tools" && <FontTools />}
+        {activeToolBar === "Font-Tools" && <FontTools finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>}
         {activeToolBar === "Dimesion-Tools" && <DimensionTools />}
         {activeToolBar === "Shapes-Tools" && <ShapesTools />}
         <OtherTools />

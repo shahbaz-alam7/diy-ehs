@@ -44,6 +44,11 @@ const TextDisplayer = React.forwardRef(
       console.log(TextObject);
       //captureText({x,y}, index);
     }
+    function getNumber(str){
+      let a = str.split('p')
+      let num = Number(a[0]);
+      return num
+    }
     return (
       TextObject && (
         <>
@@ -62,12 +67,12 @@ const TextDisplayer = React.forwardRef(
           ) : null}
           <StyledRnd
             className="d-flex"
-            default={{ x: ele.x, y: ele.y }}
+            default={{ x: getNumber(ele.x), y: getNumber(ele.y) }}
             bounds="parent"
-            onDragStop={(e, d) => onDragStop(e, d, index)}
-            onResize={(event, direction, ref, delta, index) =>
-              onResize(event, direction, ref, delta, index)
-            }
+            // onDragStop={(e, d) => onDragStop(e, d, index)}
+            // onResize={(event, direction, ref, delta, index) =>
+            //   onResize(event, direction, ref, delta, index)
+            // }
             onMouseDown={(event) => {
               event.stopPropagation();
               setHeaderIndex(index);
@@ -93,7 +98,7 @@ const TextComponent = React.forwardRef(
     let weight = info.isBold ? 900 : 500;
     let style = info.isItalic ? "italic" : "normal";
     let textdecoration = info.underline ? "underline" : "none";
-
+    let width ="200px";
     const TextField = styled.div`
       font-family: ${info.family};
       font-size: ${info.fontSize};
@@ -105,8 +110,7 @@ const TextComponent = React.forwardRef(
       /* line-height: ${info.lineSpacing}; */
       /* line-height: 10px; */
       text-decoration: ${textdecoration};
-      height: 100px;
-      width: 350px;
+      width${width},      
       &:hover {
         /* background-color: rgba(${backgroundColor}, 0.1); */
       }
