@@ -9,6 +9,7 @@ import Text from "./Text";
 import Download from "./Download";
 import frames from "../FakeData/data/framesShape";
 import "../SideBarSlider/styles/frames.css";
+import HeaderPage from "./header/HeaderPage";
 const Page = ({ addHeader }) => {
   console.log("kdsjafksdfknsdkfnianjksndfkjn");
   const pageRef = useRef(null);
@@ -38,8 +39,22 @@ const Page = ({ addHeader }) => {
     console.log(headerIndex);
   }, [headerIndex]);
   data.logos.reverse();
+  const toolsAvailable={image:"Image-Tools", text:"Font-Tools", canvas:"Dimesion-Tools",shapes:"Shapes-Tools"}
+              // tool={"Font-Tools"}
+              // tool={"Dimesion-Tools"}
+              // tool={"Shapes-Tools"}
+
+  const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);            
   return (
     <>
+     {activeTool==="Dimesion-Tools"?(
+            <HeaderPage
+              index={0}
+              ele={{}}
+              refValue={pageRef}
+              tool={activeTool}
+            />
+           ) : null}
       <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
@@ -54,7 +69,11 @@ const Page = ({ addHeader }) => {
               {data.logos.map((ele, index) => {
               
                 return (
-                  <ImageComponent index={index} ele={ele} key={ele.index} />
+                  <ImageComponent index={index} ele={ele} 
+                    key={ele.index} 
+                     activeTool={activeTool}
+                    setActiveTool={setActiveTool}
+                    toolsAvailable={toolsAvailable} />
                 );
               })}
 
@@ -68,6 +87,9 @@ const Page = ({ addHeader }) => {
                     headerIndex={headerIndex}
                     setHeaderIndex={setHeaderIndex}
                     key={ele.text}
+                    activeTool={activeTool}
+                    setActiveTool={setActiveTool}
+                    toolsAvailable={toolsAvailable}
                   />
                 );
               })}

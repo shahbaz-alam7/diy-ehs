@@ -6,8 +6,8 @@ import { data } from "./helper/posters.js";
 import { useSelector , useDispatch} from "react-redux";
 import styled from "styled-components";
 import ImageComponent from "../DoItYourSelf/Canvas/ImageComponent";
-import {getPageFromTemplate} from "../../reduxStore/actions/pageActions";
-const Items = ({ itemName, setName ,loadPage}) => {
+
+const Items = ({ itemName, setName ,loadPageData}) => {
   const dispatch =useDispatch();
   const filter =useSelector(state=>state.projects.filter);
   const categoryTemplates = filter.categoryTemplates;
@@ -25,7 +25,7 @@ const Items = ({ itemName, setName ,loadPage}) => {
         <div className="portrait-landscape-box ">
           {categoryTemplates.map(ele=>{
             return <div className="portrait">
-            <div className="pictogram" onClick={dispatch(getPageFromTemplate({templateId:ele._id}))}>
+            <div className="pictogram" onClick={()=>{loadPageData(ele._id)}}>
               <img src={ele.templateImage} alt="templates" style={{width:"100%"}} />
             </div>
             </div>
