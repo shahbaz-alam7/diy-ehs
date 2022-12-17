@@ -9,16 +9,15 @@ import Text from "./Text";
 import Download from "./Download";
 import frames from "../FakeData/data/framesShape";
 import "../SideBarSlider/styles/frames.css";
+import HeaderPage from "./header/HeaderPage";
 const Page = ({ addHeader }) => {
+  console.log("kdsjafksdfknsdkfnianjksndfkjn");
   const pageRef = useRef(null);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTemplate({ templateId: 1201, pageIndex: 0 }));
-  }, []);
+  
 
   const data = useSelector((state) => {
-    console.log(state);
-    return state.projects.pages[0];
+    console.log(state,"----------------------");
+    return state.projects.pages;
   });
   console.log("my data", data);
   let color = data ? data.backgroundColor : "green";
@@ -32,16 +31,28 @@ const Page = ({ addHeader }) => {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: white;
+    background-color:white;
+    box-shadow: 0 0 10px gray;
   `;
   const [headerIndex, setHeaderIndex] = useState(-1);
   useEffect(() => {
     console.log(headerIndex);
   }, [headerIndex]);
 
+  
+  const toolsAvailable={image:"Image-Tools", text:"Font-Tools", canvas:"Dimesion-Tools",shapes:"Shapes-Tools"}
+              // tool={"Font-Tools"}
+              // tool={"Dimesion-Tools"}
+              // tool={"Shapes-Tools"}
+              data.forEach(element => {
+                element.logos.reverse();
+              });
+              
+  const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);            
   return (
     <>
-      {/* <div className='Page_main_container' ref={pageRef}> */}
+     
+      <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
           <div
@@ -50,14 +61,29 @@ const Page = ({ addHeader }) => {
               clipPath: frames[data.frame.frameNumber],
             }}
           >  */}
+          {data.map(page=>{
+            return <>{activeTool==="Dimesion-Tools"?(
+              <HeaderPage
+                index={0}
+                ele={{}}
+                refValue={pageRef}
+                tool={activeTool}
+              />
+             ) : null}
             <Container>
-              {data.logos.map((ele, index) => {
+              
+              {page.logos.map((ele, index) => {
+              
                 return (
-                  <ImageComponent index={index} ele={ele} key={ele.index} />
+                  <ImageComponent index={index} ele={ele} 
+                    key={ele.index} 
+                     activeTool={activeTool}
+                    setActiveTool={setActiveTool}
+                    toolsAvailable={toolsAvailable} />
                 );
               })}
 
-              {data.texts.map((ele, index) => {
+              {page.texts.map((ele, index) => {
                 return (
                   <Text
                     setText={setText}
@@ -67,14 +93,20 @@ const Page = ({ addHeader }) => {
                     headerIndex={headerIndex}
                     setHeaderIndex={setHeaderIndex}
                     key={ele.text}
+                    activeTool={activeTool}
+                    setActiveTool={setActiveTool}
+                    toolsAvailable={toolsAvailable}
                   />
+                  
                 );
               })}
             </Container>
+            </>
+            })}
           {/* </div>
         </div>
       </div> */}
-      {/* </div> */}
+      </div>
       <Download pageRef={pageRef} />
     </>
   );

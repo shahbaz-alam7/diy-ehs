@@ -11,13 +11,18 @@ import { setText } from "../../../../reduxStore/actions/pageActions";
 import Editor from "./Editor";
 import "../styles/editor.css";
 const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
+  console.log("ref value", refValue, index);
   const dispatch = useDispatch();
-  const [finalFont, setFinalFont] = useState(ele.family);
-  let initialFont = Number(ele.fontSize.slice(0, ele.fontSize.length - 2));
+
+  const [finalFont, setFinalFont] = useState(ele.family||12);
+  let initialFont="roboto";
+  if( tool==="Font-Tools"){
+   initialFont = Number(ele.fontSize.slice(0, ele.fontSize.length - 2));
+  }
   const [finalFontSize, setFinalFontSize] = useState(initialFont);
   console.log(finalFont, finalFontSize);
-  console.log(refValue, "=-- -- ", index);
-  if (refValue !== null) {
+  console.log(refValue, "=-- -- ", index, "=====", tool);
+  if (refValue !== null && tool==="Font-Tools") {
     refValue.current.style.fontSize = `${finalFontSize}px`;
     console.log(finalFont);
     refValue.current.style.fontFamily = `${finalFont}`;
@@ -27,11 +32,13 @@ const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
   };
   useEffect(() => {
     return () => {
+      if( tool==="Font-Tools"){
       console.log("how many times i run");
       let props = {
         family: finalFont,
         fontsize: finalFontSize,
       };
+    }
       // dispatch(setText({props, index, pageIndex:0}));
     };
   }, []);
@@ -43,7 +50,7 @@ const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
         event.stopPropagation();
       }}
     >
-      <Editor activeToolBar={tool} />
+      <Editor tool={tool} finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>
       {/* <FontSize
         finalFontSize={finalFontSize}
         setFinalFontSize={setFinalFontSize}

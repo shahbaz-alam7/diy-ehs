@@ -3,17 +3,48 @@ import "./styles/frames.css";
 import frames from "../FakeData/data/framesShape";
 import { useDispatch } from "react-redux";
 import { setFrame } from "../../../reduxStore/actions/pageActions";
+import { IoSearchSharp } from "react-icons/io5";
 const Frames = ({ setOpenSlider }) => {
   return (
     <div className="frames_container">
-      hi iam the template
       <button
         onClick={() => {
           setOpenSlider(false);
         }}
       >
-        close frame
+        close
       </button>
+      <div className="search-div">
+        <IoSearchSharp className="icon" />{" "}
+        <input
+          type="text"
+          name="searcg_template"
+          placeholder="Search templates"
+        />
+      </div>
+      <div className="categories-div-panel">
+        <p className="heading">Styles</p>
+
+        <div className="category">
+          <p>Circle</p>
+        </div>
+        <div className="category">
+          <p>Triangle</p>
+        </div>
+        <div className="category">
+          <p>Square</p>
+        </div>
+        <div className="category">
+          <p>Polygon</p>
+        </div>
+        <div className="category">
+          <p>Lines</p>
+        </div>
+        <div className="category">
+          <p>Arrows</p>
+        </div>
+      </div>
+
       <FramesOption />
     </div>
   );

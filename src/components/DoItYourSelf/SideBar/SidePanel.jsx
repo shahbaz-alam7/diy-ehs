@@ -7,11 +7,13 @@ import Frames from "../SideBarSlider/Frames";
 import LogosOption from "../SideBarSlider/LogosOption";
 
 import { HiOutlineTemplate } from "react-icons/hi";
-import { IoShapesOutline } from "react-icons/io5";
+import { IoShapesOutline, IoArrowBack } from "react-icons/io5";
 import { GoCloudUpload } from "react-icons/go";
 import { SlFrame } from "react-icons/sl";
 import { MdTextFields, MdPhotoSizeSelectLarge } from "react-icons/md";
 import { RiStickyNoteLine } from "react-icons/ri";
+import CanvasSize from "../SideBarSlider/CanvasSize";
+import UploadFile from "../SideBarSlider/UploadFile";
 
 const menu = [
   {
@@ -20,7 +22,7 @@ const menu = [
     color: "#494FBF",
   },
   {
-    element: "Shape",
+    element: "Shapes",
     img: <IoShapesOutline className="icon" />,
     color: "#4449A5",
   },
@@ -72,18 +74,30 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
       </div>
       {openSlider && (
         <div className="toggle-container-side ">
+          <div className="back-div">
+            <IoArrowBack
+              className="back-btn"
+              onClick={() => {
+                setOpenSlider(false);
+              }}
+            />
+          </div>
           {sliderName === "Template" && (
             <TemplateOption setOpenSlider={setOpenSlider} />
           )}
 
+          {sliderName === "Shapes" && <Frames setOpenSlider={setOpenSlider} />}
           {sliderName === "Text" && (
             <TextStyle
               setOpenSlider={setOpenSlider}
               setAddHeader={setAddHeader}
             />
           )}
-          {sliderName === "Background" && (
-            <Frames setOpenSlider={setOpenSlider} />
+          {sliderName === "Canvas Size" && (
+            <CanvasSize setOpenSlider={setOpenSlider} />
+          )}
+          {sliderName === "Uploads" && (
+            <UploadFile setOpenSlider={setOpenSlider} />
           )}
           {sliderName === "Stickers" && (
             <LogosOption setOpenSlider={setOpenSlider} />
