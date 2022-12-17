@@ -1,10 +1,30 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 import { FileDrop } from "react-file-drop";
 import "./styles/canvasSize.css";
 import { IoSearchSharp } from "react-icons/io5";
-
+import { useDispatch } from "react-redux";
+import { uploadLogo } from "../../../reduxStore/actions/commonAction";
+const API = "http://localhost:8000";
 const UploadFile = ({ setOpenSlider }) => {
+  const [imgUrl, setImgUrl] = useState([]);
+const dispatch = useDispatch()
+  const uploadImg = async (e) => {
+      let file = e.target.files[0];
+      let formData = new FormData();
+      formData.append("imgUrl", file);
+      console.log(formData)
+  
+      await axios
+        .post(`${API}/posters/uploadFile`, formData)
+        .then((response) =>{
+        console.log(response);
+          setImgUrl([...imgUrl, response.data.data.fileSavedUrl])
+          let pageId="639c615fa1e9f717f4b75073"
+          dispatch(uploadLogo(response.data.data.fileSavedUrl,pageId))
+    });
+  
+    };
   const styles = {
     border: "1px solid black",
     width: "190px",
@@ -39,7 +59,12 @@ const UploadFile = ({ setOpenSlider }) => {
       </div>
       <div className="categories-div-panel">
         <p className="heading">Upload files here</p>
-        <button onClick={handleChange}> Select from Device</button>
+        <input
+                  type="file"
+                  id="file"
+                  className="file__upload"
+                  onChange={(e) => uploadImg(e)}
+                />
         <div className="drag-drop">
           <FileDrop onDrop={(files, event) => dropHandler(files, event)}>
             Drag & Drop Image here
