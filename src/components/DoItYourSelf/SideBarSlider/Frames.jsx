@@ -7,13 +7,6 @@ import { IoSearchSharp } from "react-icons/io5";
 const Frames = ({ setOpenSlider }) => {
   return (
     <div className="frames_container">
-      <button
-        onClick={() => {
-          setOpenSlider(false);
-        }}
-      >
-        close
-      </button>
       <div className="search-div">
         <IoSearchSharp className="icon" />{" "}
         <input

@@ -14,6 +14,7 @@ import { MdTextFields, MdPhotoSizeSelectLarge } from "react-icons/md";
 import { RiStickyNoteLine } from "react-icons/ri";
 import CanvasSize from "../SideBarSlider/CanvasSize";
 import UploadFile from "../SideBarSlider/UploadFile";
+import Background from "../SideBarSlider/Background";
 
 const menu = [
   {
@@ -85,13 +86,15 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
           {sliderName === "Template" && (
             <TemplateOption setOpenSlider={setOpenSlider} />
           )}
-
           {sliderName === "Shapes" && <Frames setOpenSlider={setOpenSlider} />}
           {sliderName === "Text" && (
             <TextStyle
               setOpenSlider={setOpenSlider}
               setAddHeader={setAddHeader}
             />
+          )}
+          {sliderName === "Background" && (
+            <Background setOpenSlider={setOpenSlider} />
           )}
           {sliderName === "Canvas Size" && (
             <CanvasSize setOpenSlider={setOpenSlider} />

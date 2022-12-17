@@ -5,15 +5,8 @@
   margin-bottom: 15px;
   text-align: left;
   display: flex;
-
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
-}
-
-.canvas_size .categories-div-panel,
-.recent-designs {
-  padding-left: 6px;
 }
 .canvas_size .category {
   border-radius: 2px;
@@ -56,54 +49,7 @@
 .recent-designs {
   padding-left: 6px;
 }
-.canvas_size .category {
-  border-radius: 2px;
-  width: 90px;
-  margin: 3px;
-  height: 20px;
-  display: inline-block;
-  border: 0.5px solid #eaeaea;
-  background: #081a26;
-}
-.canvas_size .category p {
-  font-family: Arial;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
-  text-align: center;
-  padding-top: 5px;
-  color: #eaeaea;
-}
-.canvas_size .designs {
-  text-align: left;
-  display: inline-block;
-  background: #d9d9d9;
-  opacity: 0.85;
-  width: 90px;
-  margin: 3px 0 0 6px;
-  height: 105px;
-}
 
-.canvas_size .heading {
-  font-weight: 500;
-  font-size: 14px;
-  color: #ffffff;
-  text-align: left;
-  font-family: Arial, sans-serif;
-  padding: 13px 22px 0 5px !important;
-}
-.canvas_size {
-  width: 90%;
-  margin: auto;
-  margin-bottom: 15px;
-  text-align: left;
-  display: flex;
-
-  /* justify-content: center; */
-  flex-direction: column;
-  align-items: center;
-}
 /* File uploader */
 .drag-drop {
   border: 1px solid black;
@@ -113,10 +59,8 @@
   border: 0.5px solid #eaeaea;
   border-radius: 2px;
 }
-/* Demo.css */
 
 .file-drop {
-  /* relatively position the container bc the contents are absolute */
   position: relative;
   height: 100%;
   color: #fff;
