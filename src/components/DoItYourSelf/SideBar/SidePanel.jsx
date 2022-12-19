@@ -5,13 +5,16 @@ import TemplateOption from "../SideBarSlider/TemplateOption";
 import TextStyle from "../SideBarSlider/TextStyles/TextStyle";
 import Frames from "../SideBarSlider/Frames";
 import LogosOption from "../SideBarSlider/LogosOption";
-
-import { HiOutlineTemplate } from "react-icons/hi";
-import { IoShapesOutline, IoArrowBack } from "react-icons/io5";
-import { GoCloudUpload } from "react-icons/go";
-import { SlFrame } from "react-icons/sl";
-import { MdTextFields, MdPhotoSizeSelectLarge } from "react-icons/md";
-import { RiStickyNoteLine } from "react-icons/ri";
+import {
+  template,
+  shape,
+  text,
+  bg,
+  canvasSize,
+  upload,
+  sticker,
+} from "../Image/header/pic";
+import { IoArrowBack } from "react-icons/io5";
 import CanvasSize from "../SideBarSlider/CanvasSize";
 import UploadFile from "../SideBarSlider/UploadFile";
 import Background from "../SideBarSlider/Background";
@@ -19,38 +22,38 @@ import Background from "../SideBarSlider/Background";
 const menu = [
   {
     element: "Template",
-    img: <HiOutlineTemplate className="icon" />,
+    img: template,
     color: "#494FBF",
   },
   {
     element: "Shapes",
-    img: <IoShapesOutline className="icon" />,
+    img: shape,
     color: "#4449A5",
   },
   {
     element: "Text",
-    img: <MdTextFields className="icon" />,
+    img: text,
     color: "#353AA5",
   },
   {
     element: "Background",
-    img: <SlFrame className="icon" />,
+    img: bg,
     color: "#323680",
   },
 
   {
     element: "Canvas Size",
-    img: <MdPhotoSizeSelectLarge className="icon" />,
+    img: canvasSize,
     color: "#2A2D65",
   },
   {
     element: "Uploads",
-    img: <GoCloudUpload className="icon" />,
+    img: upload,
     color: "#1F224D",
   },
   {
     element: "Stickers",
-    img: <RiStickyNoteLine className="icon" />,
+    img: sticker,
     color: "#171938",
   },
 ];
@@ -69,6 +72,7 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
               color={item.color}
               setOpenSlider={setOpenSlider}
               setSliderName={setSliderName}
+              openSlider={openSlider}
             />
           );
         })}

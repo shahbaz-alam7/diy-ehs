@@ -43,7 +43,7 @@ const CanvasSize = ({ setOpenSlider }) => {
         <div className="category">
           <p>Utility Stickers</p>
         </div>
-        <div className="categories-div-panel">
+        <div className="categories-div-panel div_cat">
           <p className="heading">Orinetation</p>
 
           <div className="category">
