@@ -6,8 +6,9 @@ import "./App.css";
 import { getPageFromTemplate } from "./reduxStore/actions/pageActions";
 import Home from "./components/DoItYourSelf/Home";
 import Main from "./components/searchfilter/Main";
+import Order from "./components/Pages/Order.jsx";
 function App() {
-  const [diypage,loadPage] =useState(true);
+  const [diypage, loadPage] = useState(true);
   function loadPageData(templateId) {
     dispatch(getPageFromTemplate({ templateId: templateId }));
     loadPage(true);
@@ -19,6 +20,7 @@ function App() {
     <div className="App">
       <Navbar />
       {diypage ? <Home /> : <Main loadPageData={loadPageData} />}
+      {/* <Order /> */}
     </div>
   );
 }

@@ -4,13 +4,6 @@ import { IoSearchSharp } from "react-icons/io5";
 const CanvasSize = ({ setOpenSlider }) => {
   return (
     <div className="canvas_size">
-      <button
-        onClick={() => {
-          setOpenSlider(false);
-        }}
-      >
-        close
-      </button>
       <div className="search-div">
         <IoSearchSharp className="icon" />{" "}
         <input
@@ -50,7 +43,7 @@ const CanvasSize = ({ setOpenSlider }) => {
         <div className="category">
           <p>Utility Stickers</p>
         </div>
-        <div className="categories-div-panel">
+        <div className="categories-div-panel div_cat">
           <p className="heading">Orinetation</p>
 
           <div className="category">

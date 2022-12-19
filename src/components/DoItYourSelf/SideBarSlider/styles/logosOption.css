@@ -1,11 +1,12 @@
 .frames_container {
-  padding: 14px 0;
+  padding-bottom: 14px;
 }
 .sticker-container {
   display: grid;
   grid-template-columns: auto auto;
   gap: 15px;
   padding: 20px auto;
+  margin: 20px 0;
 }
 .sticker {
   width: 70px;

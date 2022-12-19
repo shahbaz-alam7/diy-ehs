@@ -1,7 +1,9 @@
-const Icon = ({ icon, desc, left }) => {
+const Icon = ({ img, icon, desc, left }) => {
   return (
     <div className="icon-div">
-      {icon} <div className="tooltip triangle"></div>
+      <img src={img} alt=""  className="icon"/>
+      {icon}
+      <div className="tooltip triangle"></div>
       <span className="tooltip" style={{ left: left }}>
         {desc}
       </span>
