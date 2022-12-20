@@ -3,7 +3,7 @@ import Home from "./Home";
 import Items from "./Items";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
-const Main = ({loadPageData}) => {
+const Main = ({ loadPageData }) => {
   const [name, setName] = React.useState("");
   return (
     <div>
@@ -20,9 +20,9 @@ const Main = ({loadPageData}) => {
         </div>
       </div>
       {name ? (
-        <Items itemName={name} setName={setName} loadPageData={loadPageData}/>
+        <Items itemName={name} setName={setName} loadPageData={loadPageData} />
       ) : (
-        <Home setName={setName} />
+        <Home setName={setName} loadPageData={loadPageData} />
       )}
     </div>
   );

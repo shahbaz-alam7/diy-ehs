@@ -51,6 +51,7 @@ const TextDisplayer = React.forwardRef(
       let num = Number(a[0]);
       return num
     }
+    
     return (
       TextObject && (
         <>{console.log(activeTool,ActiveIndex,index,"****************")}
@@ -75,13 +76,14 @@ const TextDisplayer = React.forwardRef(
             onMouseDown={(event) => {
               event.stopPropagation();
               console.log(pageContent.current)
-              dispatch(updatePage({page:pageContent.current[pageIndex]}))
+              
               console.log(":hello mouse is down")
               // showHeader.current=true;
               // console.log(showHeader.current);
               let str = "Font-Tools"
               setActiveTool(str);
               setActiveIndex(`${index}`);
+              dispatch(updatePage({page:pageContent.current[pageIndex]}))
             }}
             // onMouseUp={event=>{
             //   showHeader.current=false;
@@ -104,6 +106,9 @@ const TextDisplayer = React.forwardRef(
 const TextComponent = React.forwardRef(
   ({setShowHeader, info, setRefVal, backgroundColor, index, selectedCol, TextObject }) => {
     const ref = useRef(null);
+    
+
+   
     let weight = info.isBold ? 900 : 500;
     let style = info.isItalic ? "italic" : "normal";
     let textdecoration = info.underline ? "underline" : "none";

@@ -13,6 +13,7 @@ import "../styles/editor.css";
 const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refValue, tool }) => {
   console.log("ref value", refValue, index,ele);
   const dispatch = useDispatch();
+  
   const [textColor, setTextColor] = useState(ele.color||"black");
   const [finalFont, setFinalFont] = useState(ele.family||"roboto");
   let initialFont="12px";
@@ -22,7 +23,8 @@ const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refVal
   const [finalFontSize, setFinalFontSize] = useState(initialFont);
   console.log(finalFont, finalFontSize);
   console.log(refValue, "=-- -- ", index, "=====", tool);
-  if (refValue !== null && tool==="Font-Tools") {
+  useEffect(()=>{
+  if (refValue !== null && tool==="Font-Tools" ) {
     refValue.current.style.fontSize = `${finalFontSize}px`;
     console.log(finalFont, finalFontSize,textColor);
     refValue.current.style.fontFamily = `${finalFont}`;
@@ -34,8 +36,9 @@ const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refVal
     console.log(pageContent.current[pageIndex])
   }
   if (refValue !== null && tool==="Dimesion-Tools") {
-    
+
   }
+},[finalFontSize,finalFont,textColor])
   const captureText = (props, index) => {
     dispatch(setText({ props, index, pageIndex: 0 }));
   };

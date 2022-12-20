@@ -3,7 +3,7 @@ import "./styles/Page.css";
 import "./styles/MainContainer.css";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { getTemplate, setText } from "../../../reduxStore/actions/pageActions";
+import { getTemplate, setText, updatePage } from "../../../reduxStore/actions/pageActions";
 import ImageComponent from "./ImageComponent";
 import Text from "./Text";
 import Download from "./Download";
@@ -48,10 +48,12 @@ const Page = ({ addHeader }) => {
                 element.logos.reverse();
               });
               
-  const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);            
+  const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);    
+  const dispatch = useDispatch();        
   return (
     <>
      {console.log("refreshing")}
+     
       <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
@@ -62,6 +64,8 @@ const Page = ({ addHeader }) => {
             }}
           >  */}
           {data.map((page, pageIndex)=>{
+            console.log(page, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+            
             return <div
             onMouseDown={(event) => {
               event.stopPropagation();
@@ -69,6 +73,7 @@ const Page = ({ addHeader }) => {
               let str = "Dimesion-Tools"
               setActiveTool(str);
               setActiveIndex(`${pageIndex}`);
+              dispatch(updatePage({page:pageContent.current[pageIndex]}))
             }}
             >
               {activeTool==="Dimesion-Tools"?(
@@ -96,6 +101,7 @@ const Page = ({ addHeader }) => {
               })}
 
               {page.texts.map((ele, index) => {
+                console.log(ele, "pageeeeeeeeeeeeeeeeeeeeeeeeeee")
                 return (
                   <Text
                     setText={setText}

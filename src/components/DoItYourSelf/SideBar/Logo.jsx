@@ -31,7 +31,7 @@ const Logo = ({
           style={{
             filter:
               openSlider && sliderName == element
-                ? " invert(1%) sepia(90%) saturate(6207%) hue-rotate(110deg) brightness(95%) contrast(100%)"
+                ? " invert(57%) sepia(10%) saturate(3500%) hue-rotate(170deg) brightness(75%) contrast(80%)"
                 : "invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)",
           }}
         />

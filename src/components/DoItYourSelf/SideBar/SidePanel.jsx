@@ -18,7 +18,7 @@ import { IoArrowBack } from "react-icons/io5";
 import CanvasSize from "../SideBarSlider/CanvasSize";
 import UploadFile from "../SideBarSlider/UploadFile";
 import Background from "../SideBarSlider/Background";
-
+import { useDispatch, useSelector } from "react-redux";
 const menu = [
   {
     element: "Template",
@@ -60,9 +60,17 @@ const menu = [
 
 const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
   const [sliderName, setSliderName] = useState("");
+  const dispatch = useDispatch();
+  const callOpneSlide = () => {
+    dispatch({ type: "SLIDER_ON" });
+  };
+  const backButtonClick = () => {
+    dispatch({ type: "SLIDER_OFF" });
+    setOpenSlider(false);
+  };
   return (
     <div className="sidepanel_container">
-      <div className="menu">
+      <div className="menu" onClick={callOpneSlide}>
         {menu.map((item, i) => {
           return (
             <Logo
@@ -79,13 +87,8 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
       </div>
       {openSlider && (
         <div className="toggle-container-side ">
-          <div className="back-div">
-            <IoArrowBack
-              className="back-btn"
-              onClick={() => {
-                setOpenSlider(false);
-              }}
-            />
+          <div className="back-div" onClick={backButtonClick}>
+            <IoArrowBack className="back-btn" />
           </div>
           {sliderName === "Template" && (
             <TemplateOption setOpenSlider={setOpenSlider} />
