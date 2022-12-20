@@ -8,11 +8,9 @@ import Home from "./components/DoItYourSelf/Home";
 import Main from "./components/searchfilter/Main";
 import Order from "./components/Pages/Order.jsx";
 function App() {
-<<<<<<< HEAD
+
   const [diypage,loadPage] =useState(false);
-=======
-  const [diypage, loadPage] = useState(true);
->>>>>>> f6fe35ac73c83b14ffe3e21bdc456e1b341bfec7
+
   function loadPageData(templateId) {
     dispatch(getPageFromTemplate({ templateId: templateId }));
     loadPage(true);
