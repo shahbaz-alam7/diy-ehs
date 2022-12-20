@@ -11,7 +11,7 @@ import {
 const OtherTools = () => {
   return (
     <div className="other-tools flex">
-      <Icon icon={<TiDocumentAdd className="icon" />} desc="Copy" left="-5px" />
+      <Icon icon={<TiDocumentAdd className="icon" />} desc="Copy" left="-5px"  />
       <Icon icon={<IoDocumentsOutline className="icon" />} desc="Add_Page" />
       <Icon icon={<RiDeleteBinLine className="icon" />} desc="Delete" />
       <Icon icon={<MdPreview className="icon" />} desc="Preview" />

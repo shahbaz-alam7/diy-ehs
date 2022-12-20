@@ -6,7 +6,7 @@ import FontWeight from "../helper/FontWeight";
 import FontComponent from "../helper/FontFamily";
 import ColorPalette from "../ColorPalette";
 import { FiAlignCenter } from "../icons";
-const FontTools = ({finalFont,setFinalFont,finalFontSize, setFinalFontSize}) => {
+const FontTools = ({textColor,setTextColor,finalFont,setFinalFont,finalFontSize, setFinalFontSize}) => {
   //const [finalFont, setFinalFont] = useState("Open Sans");
 
   return (
@@ -14,9 +14,9 @@ const FontTools = ({finalFont,setFinalFont,finalFontSize, setFinalFontSize}) => 
       <FontComponent finalFont={finalFont} setFinalFont={setFinalFont} />
       <FontWeight />
       <FontSize finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>
-      <ColorPalette />
+      <ColorPalette textColor={textColor} setTextColor={setTextColor} />
       <div className="hex-code">
-        <p>#000</p>
+        <p>{textColor}</p>
       </div>
       <Icon icon={<FiAlignCenter className="icon" />} />
     </div>

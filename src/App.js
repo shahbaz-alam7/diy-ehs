@@ -7,7 +7,7 @@ import { getPageFromTemplate } from "./reduxStore/actions/pageActions";
 import Home from "./components/DoItYourSelf/Home";
 import Main from "./components/searchfilter/Main";
 function App() {
-  const [diypage,loadPage] =useState(true);
+  const [diypage,loadPage] =useState(false);
   function loadPageData(templateId) {
     dispatch(getPageFromTemplate({ templateId: templateId }));
     loadPage(true);

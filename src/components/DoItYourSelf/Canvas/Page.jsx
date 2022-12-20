@@ -11,14 +11,14 @@ import frames from "../FakeData/data/framesShape";
 import "../SideBarSlider/styles/frames.css";
 import HeaderPage from "./header/HeaderPage";
 const Page = ({ addHeader }) => {
-  console.log("kdsjafksdfknsdkfnianjksndfkjn");
   const pageRef = useRef(null);
-  
+  const pageContent = useRef([]);
 
   const data = useSelector((state) => {
     console.log(state,"----------------------");
     return state.projects.pages;
   });
+  pageContent.current=data;
   console.log("my data", data);
   let color = data ? data.backgroundColor : "green";
 
@@ -34,10 +34,10 @@ const Page = ({ addHeader }) => {
     background-color:white;
     box-shadow: 0 0 10px gray;
   `;
-  const [headerIndex, setHeaderIndex] = useState(-1);
-  useEffect(() => {
-    console.log(headerIndex);
-  }, [headerIndex]);
+  const [ActiveIndex, setActiveIndex] = useState("-1");
+  // useEffect(() => {
+  //   console.log(headerIndex);
+  // }, [headerIndex]);
 
   
   const toolsAvailable={image:"Image-Tools", text:"Font-Tools", canvas:"Dimesion-Tools",shapes:"Shapes-Tools"}
@@ -51,7 +51,7 @@ const Page = ({ addHeader }) => {
   const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);            
   return (
     <>
-     
+     {console.log("refreshing")}
       <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
@@ -61,11 +61,20 @@ const Page = ({ addHeader }) => {
               clipPath: frames[data.frame.frameNumber],
             }}
           >  */}
-          {data.map(page=>{
-            return <>{activeTool==="Dimesion-Tools"?(
+          {data.map((page, pageIndex)=>{
+            return <div
+            onMouseDown={(event) => {
+              event.stopPropagation();
+              console.log(":hello mouse is down in main page")
+              let str = "Dimesion-Tools"
+              setActiveTool(str);
+              setActiveIndex(`${pageIndex}`);
+            }}
+            >
+              {activeTool==="Dimesion-Tools"?(
               <HeaderPage
-                index={0}
-                ele={{}}
+                index={pageIndex}
+                ele={page}
                 refValue={pageRef}
                 tool={activeTool}
               />
@@ -79,7 +88,10 @@ const Page = ({ addHeader }) => {
                     key={ele.index} 
                      activeTool={activeTool}
                     setActiveTool={setActiveTool}
-                    toolsAvailable={toolsAvailable} />
+                    toolsAvailable={toolsAvailable} 
+                    setActiveIndex={setActiveIndex}
+                    ActiveIndex={ActiveIndex}
+                    />
                 );
               })}
 
@@ -90,18 +102,21 @@ const Page = ({ addHeader }) => {
                     index={index}
                     ele={ele}
                     color={color}
-                    headerIndex={headerIndex}
-                    setHeaderIndex={setHeaderIndex}
                     key={ele.text}
                     activeTool={activeTool}
                     setActiveTool={setActiveTool}
                     toolsAvailable={toolsAvailable}
+                    setActiveIndex={setActiveIndex}
+                    ActiveIndex={ActiveIndex}
+                    pageContent={pageContent}
+                    pageIndex={pageIndex}
                   />
                   
                 );
               })}
+              
             </Container>
-            </>
+            </div>
             })}
           {/* </div>
         </div>
