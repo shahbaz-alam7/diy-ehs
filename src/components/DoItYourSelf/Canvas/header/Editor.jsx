@@ -7,6 +7,7 @@ import ShapesTools from "./tools/ShapesTools";
 import ImageTools from "./tools/ImageTools";
 import UndoRedoTool from "./tools/UndoRedoTool";
 import OtherTools from "./tools/OtherTools";
+import { useSelector } from "react-redux";
 const Editor = ({
   tool,
   finalFont,
@@ -15,9 +16,10 @@ const Editor = ({
   setFinalFontSize,
   openSlider,
 }) => {
-  console.log(tool, "psdfkojsdafiajsdjf", openSlider);
+  // console.log(tool, "psdfkojsdafiajsdjf", openSlider);
+  const toogle = useSelector((state) => state.projects.sideSlider);
   return (
-    <div className={openSlider ? "editor" : "editor mx-width"}>
+    <div className={toogle ? "editor" : "editor mx-width" }>
       <div className="editor-child">
         <UndoRedoTool />
         {tool === "Image-Tools" && <ImageTools />}

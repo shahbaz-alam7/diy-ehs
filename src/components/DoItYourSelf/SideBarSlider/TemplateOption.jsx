@@ -12,6 +12,7 @@ const TemplateOption = ({ setOpenSlider }) => {
 
   const filter = useSelector((state) => state.projects.filter);
   const categoryTemplates = filter.categoryTemplates;
+  let category = filter.category;
 
   useEffect(() => {
     dispatch(getCategoryTemplates({ categoryid: "9879878" }));
@@ -35,19 +36,13 @@ const TemplateOption = ({ setOpenSlider }) => {
       </div>
       <div className="categories-div-panel">
         <p className="heading">Categories</p>
-
-        <div className="category">
-          <p>Posters</p>
-        </div>
-        <div className="category">
-          <p>Floor Graphics</p>
-        </div>
-        <div className="category">
-          <p>Signages</p>
-        </div>
-        <div className="category">
-          <p>Utility Stickers</p>
-        </div>
+        {category.map((item) => {
+          return (
+            <div className="category">
+              <p>{item.categoryName}</p>
+            </div>
+          );
+        })}
       </div>
       <div className="recent-designs">
         <p className="heading">Recent Design</p>
