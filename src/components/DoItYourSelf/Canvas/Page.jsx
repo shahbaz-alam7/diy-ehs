@@ -73,6 +73,7 @@ const Page = ({ addHeader }) => {
               let str = "Dimesion-Tools"
               setActiveTool(str);
               setActiveIndex(`${pageIndex}`);
+              dispatch({type:"SET_CURRENT_PAGE", payload:pageIndex});
               dispatch(updatePage({page:pageContent.current[pageIndex]}))
             }}
             >
@@ -89,13 +90,17 @@ const Page = ({ addHeader }) => {
               {page.logos.map((ele, index) => {
               
                 return (
-                  <ImageComponent index={index} ele={ele} 
+                  <ImageComponent 
+                    index={index} 
+                    ele={ele} 
                     key={ele.index} 
                      activeTool={activeTool}
                     setActiveTool={setActiveTool}
                     toolsAvailable={toolsAvailable} 
                     setActiveIndex={setActiveIndex}
                     ActiveIndex={ActiveIndex}
+                    pageContent={pageContent}
+                    pageIndex={pageIndex}
                     />
                 );
               })}

@@ -67,7 +67,7 @@ const TextStyle = ({ setOpenSlider, setAddHeader }) => {
               onClick={() => {
                 dispatch(
                   getTextTemplate({
-                    textTemplateId: ele.id,
+                    text:ele,
                     pageIndex: pageIndex,
                   })
                 );

@@ -12,7 +12,7 @@ const LogosOption = ({ setOpenSlider }) => {
   const Logos = project.filter.logo;
   function clickHandler(ele) {
     console.log("current page", project.currentPage);
-    dispatch(getLogo({ logoId: ele.id, pageIndex: pageIndex }));
+    dispatch(getLogo({ logo:ele, pageIndex: pageIndex }));
   }
   useEffect(() => {
     dispatch(getAllLogo());

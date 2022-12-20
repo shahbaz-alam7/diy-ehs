@@ -8,7 +8,28 @@ import store from "../store";
 import frames from "../../components/DoItYourSelf/FakeData/data/framesShape";
 import { useState } from "react";
 
-
+export const getTextTemplate =({text, pageIndex})=> {
+    return async dispatch =>{
+        let data= store.getState();
+        
+         data.projects.pages[pageIndex].texts.push(text);
+         let page = {...data.projects.pages[pageIndex]};
+         console.log(page)
+       
+        dispatch(updatePage({page:page}))
+    }
+}
+export const getLogo =({logo, pageIndex})=> {
+    return async dispatch =>{
+        let data= store.getState();
+        
+         data.projects.pages[pageIndex].logos.push(logo);
+         let page = {...data.projects.pages[pageIndex]};
+         console.log(page)
+       
+        dispatch(updatePage({page:page}))
+    }
+}
 export const updatePage=({page})=>{
     return async dispatch =>{
     console.log(page, "to be updated page ----------------")
@@ -62,6 +83,38 @@ export const getPageFromTemplate=({templateId})=>{
                 }
             }
     }
+    
+    export const changeTemplate=({template, pageIndex})=>{
+        return async dispatch =>{
+            let dataStore= store.getState();
+        
+            let pageId = dataStore.projects.pages[pageIndex]._id;
+                let d = {
+                    template:template._id,
+                    pageId :pageId
+                }
+                //console.log(d)
+                const response = await fetch(`http://localhost:8000/diy/diycreateProject`, {
+                    method: "POST",
+                    body: JSON.stringify(d),
+                    headers: { "Content-Type": "application/json",
+                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVmODAwMDJiYjg5MjJiMjRkMGE3YzciLCJSb2xlIjoidXNlciIsImlhdCI6MTY3MTE5ODQ5MiwiZXhwIjoxNjc0Nzk4NDkyfQ.3UfDH7xUj2ezGnvAk-LFWHw2FgHoZkUQg1DV2DSb_hw"
+                 },
+                  });
+                  const data = await response.json();
+                  // //console.log(data);
+                
+                  if(data.status===200)
+                    {
+                        let page = data.data.result[0].pageArray;
+                        console.log("==================page====", page,data);
+                        dispatch({
+                            type: "ADD_PAGE",
+                            payload: {page:page},
+                          });
+                    }
+                }
+        }
 export const setFrame =({frameNumber})=>{
     return async dispatch =>{
         let data= store.getState();
@@ -143,17 +196,7 @@ export const setTemplateColor =({backgroundColor, pageIndex})=>{
 
     }
 }
-export const getLogo =({logoId, pageIndex})=> {
-    return async dispatch =>{
-        //await (async function (){ 
-            let logo = Logos.filter(ele=>ele.id===logoId);
-            dispatch( {
-                type: "GET_LOGOS",
-                payload: {logo, pageIndex}
-            });   
-       // })()
-    }
-}
+
 export const setLogo =({propObject, index, pageIndex}) =>{
     return async dispatch=>{
         let data= store.getState();
@@ -209,21 +252,6 @@ export const getText =({TextId, pageIndex})=> {
                 payload: {text, pageIndex}
             });    
         //})();
-    }
-}
-export const getTextTemplate =({textTemplateId, pageIndex})=> {
-    return async dispatch =>{
-  //      await (async function (){
-            let textTemplate = TextTemplate.filter(ele=>ele.id===textTemplateId);
-            console.log(textTemplate);
-            textTemplate[0].text.forEach(TextId=>{
-                dispatch(getText({TextId, pageIndex}));
-            })
-            dispatch( {
-                type: "GET_TEXT_TEMPLATE",
-                payload: {textTemplate, pageIndex}
-            });  
-//        })();  
     }
 }
 
