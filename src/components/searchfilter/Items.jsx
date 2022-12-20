@@ -3,17 +3,17 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Portrait from "./helper/Portrait";
 import Landscape from "./helper/Landscape";
 import { data } from "./helper/posters.js";
-import { useSelector , useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import ImageComponent from "../DoItYourSelf/Canvas/ImageComponent";
 
-const Items = ({ itemName, setName ,loadPageData}) => {
-  const dispatch =useDispatch();
-  const filter =useSelector(state=>state.projects.filter);
+const Items = ({ itemName, setName, loadPageData }) => {
+  const dispatch = useDispatch();
+  const filter = useSelector((state) => state.projects.filter);
   const categoryTemplates = filter.categoryTemplates;
-  console.log(categoryTemplates,"00000")
+  console.log(filter, "0000000000000000000000");
   const signalWords = data[0].signals;
- 
+
   return (
     <>
       <div className="items-box ">
@@ -23,12 +23,23 @@ const Items = ({ itemName, setName ,loadPageData}) => {
         </p>
         <p className="heading">Portrait</p>
         <div className="portrait-landscape-box ">
-          {categoryTemplates.map(ele=>{
-            return <div className="portrait">
-            <div className="pictogram" onClick={()=>{loadPageData(ele._id)}}>
-              <img src={ele.templateImage} alt="templates" style={{width:"100%"}} />
-            </div>
-            </div>
+          {categoryTemplates.map((ele) => {
+            return (
+              <div className="portrait">
+                <div
+                  className="pictogram"
+                  onClick={() => {
+                    loadPageData(ele._id);
+                  }}
+                >
+                  <img
+                    src={ele.templateImage}
+                    alt="templates"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              </div>
+            );
           })}
         </div>
         <div className="portrait-landscape-box ">
