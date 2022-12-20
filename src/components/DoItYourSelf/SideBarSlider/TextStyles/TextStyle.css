@@ -1,3 +1,50 @@
 .text_container {
-  /* margin-left: 145px; */
+  width: 90%;
+  margin: auto;
+  margin-bottom: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text_container .btn_div {
+  width: 170px;
+  margin: 10px 0;
+}
+.text_container button {
+  width: 100%;
+  padding: 4px;
+  border: 0.5px solid #eaeaea;
+  border-radius: 2px;
+  margin-bottom: 7px;
+  background: #081a26;
+  color: #eaeaea;
+}
+.text_container .btn_div p {
+  font-family: Arial;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  /* text-align: center; */
+  padding: 15px 0;
+  color: #eaeaea;
+}
+
+.text_container .heading {
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: left;
+  width: 85%;
+
+  font-family: Arial, sans-serif;
+  padding: 13px 22px 0 0px !important;
+}
+.font-designs {
+  width: 95%;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+  row-gap: 40px;
 }

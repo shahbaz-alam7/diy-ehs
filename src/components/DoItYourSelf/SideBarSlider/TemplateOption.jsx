@@ -55,7 +55,7 @@ const TemplateOption = ({ setOpenSlider }) => {
         <div className="designs"></div>
         <div className="designs"></div>
       </div>
-      <div className="all-categories">
+      <div className="all-categories categories-div-panel">
         <p className="heading">All Categories</p>
 
         {categoryTemplates.map((ele) => {
