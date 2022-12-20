@@ -8,6 +8,32 @@ import store from "../store";
 import frames from "../../components/DoItYourSelf/FakeData/data/framesShape";
 import { useState } from "react";
 
+
+export const updatePage=({page})=>{
+    return async dispatch =>{
+    console.log(page, "to be updated page ----------------")
+    
+    const response = await fetch(`http://localhost:8000/diy/diyaddToPage`, {
+                method: "POST",
+                body: JSON.stringify(page),
+                headers: { "Content-Type": "application/json",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVmODAwMDJiYjg5MjJiMjRkMGE3YzciLCJSb2xlIjoidXNlciIsImlhdCI6MTY3MTUyMTM0NiwiZXhwIjoxNjc1MTIxMzQ2fQ.qAZNqayStO5pfktz-nFskDs6d8UkMvcZIasrtGakUYQ"
+             },
+              });
+              const data = await response.json();
+              //console.log(data);
+              if(data.status===200)
+                {//console.log(data.data);
+                    let page = [data.data];
+                    console.log("page====", page);
+                    dispatch({
+                        type: "ADD_PAGE",
+                        payload: {page:page},
+                      });
+                }
+    }
+}
+
 export const getPageFromTemplate=({templateId})=>{
     return async dispatch =>{
             

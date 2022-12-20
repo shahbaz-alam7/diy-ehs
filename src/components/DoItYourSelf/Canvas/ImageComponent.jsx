@@ -34,7 +34,7 @@ function ImageComp ({img,setRefVal}){
 }
 
 
-const ImageComponent = ({ele, index, activeTool,setActiveTool,toolsAvailable}) => {
+const ImageComponent = ({setActiveIndex,ActiveIndex,ele, index, activeTool,setActiveTool,toolsAvailable}) => {
   const [ref, setRefVal] = useState(null);
     const dispatch =useDispatch();
     const ImageElement = useRef(ele);
@@ -66,12 +66,13 @@ const ImageComponent = ({ele, index, activeTool,setActiveTool,toolsAvailable}) =
       }
   return (
     <>
-    {activeTool==="Image-Tools"?(
+    {console.log(activeTool ,index, ActiveIndex)}
+    {(activeTool==="Image-Tools"  && ActiveIndex==index)?(
             <HeaderPage
-              index={index}
-              ele={ele}
-              refValue={ref}
-              tool={activeTool}
+            index={index}
+            ele={ele}
+            refValue={ref}
+            tool={activeTool}
             />
            ) : null}
       <StyledRnd
@@ -88,7 +89,13 @@ const ImageComponent = ({ele, index, activeTool,setActiveTool,toolsAvailable}) =
                 key={ele._id}
                 onMouseDown={(event) => {
                   event.stopPropagation();
-                  setActiveTool(toolsAvailable.image)
+                    console.log(":hello mouse is down")
+                    // showHeader.current=true;
+                    // console.log(showHeader.current);
+                    let str = "Image-Tools"
+                    setActiveTool(str);
+                    setActiveIndex(`${index}`);
+              
                 }}
             >
             <ImageComp  img={ele.logoURL} setRefVal={setRefVal}/>

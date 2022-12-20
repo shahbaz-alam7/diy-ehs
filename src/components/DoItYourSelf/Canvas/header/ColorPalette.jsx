@@ -2,15 +2,16 @@ import React, { useRef, useState } from "react";
 import { CompactPicker } from "react-color";
 import { useDispatch } from "react-redux";
 import CircleIcon from "@mui/icons-material/Circle";
-const ColorPalette = ({ index, actionType, isTemplateColor, currentColor }) => {
+const ColorPalette = ({textColor,setTextColor, index, actionType, isTemplateColor, currentColor }) => {
   const dispatch = useDispatch();
   const [newColor, setNewColor] = useState(currentColor);
   const [showColorBox, setShowColorBox] = useState(false);
   const captureText = (props, index) => {
-    setNewColor(props.color);
-    if (isTemplateColor) {
-      dispatch(actionType({ backgroundColor: props.color, pageIndex: 0 }));
-    } else dispatch(actionType({ props, index, pageIndex: 0 }));
+    setTextColor(props.color);
+    // setNewColor(props.color);
+    // if (isTemplateColor) {
+    //   dispatch(actionType({ backgroundColor: props.color, pageIndex: 0 }));
+    // } else dispatch(actionType({ props, index, pageIndex: 0 }));
   };
   return (
     <div
@@ -23,7 +24,7 @@ const ColorPalette = ({ index, actionType, isTemplateColor, currentColor }) => {
       }}
     >
       <div
-        style={{ color: `${newColor}` }}
+        style={{ color: `${textColor}` }}
         onClick={() => {
           setShowColorBox(showColorBox ? false : true);
         }}

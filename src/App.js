@@ -8,7 +8,9 @@ import Home from "./components/DoItYourSelf/Home";
 import Main from "./components/searchfilter/Main";
 import Order from "./components/Pages/Order.jsx";
 function App() {
-  const [diypage, loadPage] = useState(false);
+
+  const [diypage,loadPage] =useState(false);
+
   function loadPageData(templateId) {
     dispatch(getPageFromTemplate({ templateId: templateId }));
     loadPage(true);
