@@ -21,8 +21,8 @@ function App() {
     // <div className="App" style={{backgroundColor:"yellow",width:"400px", height:"400px"}}>
     <div className="App">
       <Navbar />
-      {diypage ? <Home /> : <Main loadPageData={loadPageData} />}
-      {/* <Order /> */}
+      {/* {diypage ? <Home /> : <Main loadPageData={loadPageData} />} */}
+      <Order />
     </div>
   );
 }
