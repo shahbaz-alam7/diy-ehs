@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { FileDrop } from "react-file-drop";
 import "./styles/canvasSize.css";
-import { IoSearchSharp } from "react-icons/io5";
 
 const UploadFile = ({ setOpenSlider }) => {
   const styles = {
@@ -22,14 +21,6 @@ const UploadFile = ({ setOpenSlider }) => {
   };
   return (
     <div className="canvas_size">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="categories-div-panel">
         <p className="heading">Upload files here</p>
         <button onClick={handleChange}> Select from Device</button>

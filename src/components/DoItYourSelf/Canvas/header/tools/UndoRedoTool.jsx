@@ -4,8 +4,8 @@ import { undo, redo } from "../../../Image/header/pic";
 const UndoRedoTool = () => {
   return (
     <div className="back-forward flex">
-      <Icon img={undo} desc="Back" left="" />
-      <Icon img={redo} desc="Forward" />
+      <Icon img={undo} desc="Undo" left="" />
+      <Icon img={redo} desc="Redo" />
     </div>
   );
 };

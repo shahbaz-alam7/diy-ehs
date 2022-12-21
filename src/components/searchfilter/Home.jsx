@@ -1,27 +1,33 @@
-import React from "react";
-import "./styles.css";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import poster from "./img/poster.png";
-import utility from "./img/utility-stricker.png";
-import floor_graphics from "./img/floor_graphics.png";
-import signages from "./img/signages.png";
+import { useEffect, useState } from "react";
 import Portrait from "./helper/Portrait";
-import Landscape from "./helper/Landscape";
+import {
+  Landscape1,
+  Portrait1,
+  Filter,
+  Sort,
+} from "../DoItYourSelf/Image/header/pic";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useState } from "react";
 import {
   getCategory,
   getCategoryTemplates,
 } from "../../reduxStore/actions/filterAction";
 
-const Home = ({ setName, loadPageData }) => {
+const Home = ({ setName, loadPageData, templates, setTemplates }) => {
   const dispatch = useDispatch();
   let filter = useSelector((state) => state.projects.filter);
-
+  const [ativeFilter, setActiveFilter] = useState("");
   let category = filter.category;
   const categoryTemplates = filter.categoryTemplates;
   const [categroyId, setCategoryId] = useState();
+  const filterPortrait = () => {
+    
+    const filterData = templates.filter((item) => {
+      return item.mode === "potrait";
+    });
+    setTemplates(filterData);
+    setActiveFilter("portrait");
+  };
+  const filterLandscape = () => {};
 
   // console.log("jkdsfjkgsdfgjdfgjk categroy", category, categoryTemplates);
   useEffect(() => {
@@ -49,30 +55,31 @@ const Home = ({ setName, loadPageData }) => {
         </div>
       </div>
       <div className="diy-home-btm">
-        <p className="heading">All Categories</p>
-        {/* <div className="div">
-          <Portrait title="Notice" color="#00E0FF" />
-          <Portrait title="Danger" color="#FF0000" />
-          <Portrait title="Caution" color="#FFE500" />
-          <Portrait title="Caution" color="#FFE500" />
-        </div> */}
-        <div className="portrait-landscape-box ">
-          {categoryTemplates.map((ele) => {
+        <div className="btm-header">
+          <p className="heading">All Categories</p>
+          <div className="icon-container">
+            <div className={ativeFilter === "portrait" ? "activeFill" : ""}>
+              <img src={Portrait1} alt="portrait" onClick={filterPortrait} />
+            </div>
+            <div className={ativeFilter === "landscape" ? "activeFill" : ""}>
+              <img src={Landscape1} alt="landscape" onClick={filterLandscape} />
+            </div>
+            <div className={ativeFilter === "filter" ? "activeFill" : ""}>
+              <img src={Filter} alt="filter" />
+            </div>
+            <div className={ativeFilter === "sort" ? "activeFill" : ""}>
+              <img src={Sort} alt="sort" />
+            </div>
+          </div>
+        </div>
+        <div className="portrait-box ">
+          {templates.map((ele) => {
             return (
-              <div className="portrait">
-                <div
-                  className="pictogram"
-                  onClick={() => {
-                    loadPageData(ele._id);
-                  }}
-                >
-                  <img
-                    src={ele.templateImage}
-                    alt="templates"
-                    style={{ width: "100%" }}
-                  />
-                </div>
-              </div>
+              <Portrait
+                id={ele._id}
+                img={ele.templateImage}
+                loadPageData={loadPageData}
+              />
             );
           })}
         </div>

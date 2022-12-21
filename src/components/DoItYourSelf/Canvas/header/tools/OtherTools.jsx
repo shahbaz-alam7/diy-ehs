@@ -14,9 +14,10 @@ const OtherTools = () => {
 
   const dispatch =useDispatch(); 
   return (
+
     <div className="other-tools flex" onClick={()=>{console.log("clicked");dispatch(clonePage())}}>
-      <Icon img={addNew} desc="Copy" left="-5px"  />
-      <Icon img={twoDocs} desc="Add_Page" />
+          <Icon img={addNew} desc="Add_Page" left="-5px" />
+      <Icon img={twoDocs} desc="Copy" />
       <Icon img={deletePic} desc="Delete" />
       <Icon img={preview} desc="Preview" />
       <Icon img={download} desc="Download" />

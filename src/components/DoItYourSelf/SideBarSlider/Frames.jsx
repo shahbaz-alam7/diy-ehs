@@ -7,14 +7,6 @@ import { IoSearchSharp } from "react-icons/io5";
 const Frames = ({ setOpenSlider }) => {
   return (
     <div className="frames_container">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="categories-div-panel">
         <p className="heading">Styles</p>
 
