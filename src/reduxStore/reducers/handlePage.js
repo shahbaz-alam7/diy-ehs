@@ -34,11 +34,11 @@ const handlePage = (state = initialState, action) => {
 
         case 'GET_TEMPLATE':
            
-        console.log(state,"------");
+        // console.log(state,"------");
 
             page ={...state[action.payload.pageIndex], template:action.payload.template}
             const obj= state.slice(0, action.payload.pageIndex).concat([page]).concat(state.slice(action.payload.pageIndex+1));
-           console.log(obj,"=====");
+        //    console.log(obj,"=====");
            return obj
         case 'UPDATE_TEMPLATE_COLOR':
                 return  state.slice(0, action.payload.pageIndex).concat([action.payload.page]).concat(state.slice(action.payload.pageIndex+1));

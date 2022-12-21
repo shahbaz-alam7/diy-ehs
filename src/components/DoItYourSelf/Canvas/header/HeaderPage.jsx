@@ -10,30 +10,42 @@ import { setText } from "../../../../reduxStore/actions/pageActions";
 // tools
 import Editor from "./Editor";
 import "../styles/editor.css";
-const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
-  console.log("ref value", refValue, index);
+const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refValue, tool }) => {
+  // console.log("ref value", refValue, index,ele);
   const dispatch = useDispatch();
-
-  const [finalFont, setFinalFont] = useState(ele.family||12);
-  let initialFont="roboto";
+  
+  const [textColor, setTextColor] = useState(ele.color||"black");
+  const [finalFont, setFinalFont] = useState(ele.family||"roboto");
+  let initialFont="12px";
   if( tool==="Font-Tools"){
    initialFont = Number(ele.fontSize.slice(0, ele.fontSize.length - 2));
   }
   const [finalFontSize, setFinalFontSize] = useState(initialFont);
-  console.log(finalFont, finalFontSize);
-  console.log(refValue, "=-- -- ", index, "=====", tool);
-  if (refValue !== null && tool==="Font-Tools") {
+  // console.log(finalFont, finalFontSize);
+  // console.log(refValue, "=-- -- ", index, "=====", tool);
+  useEffect(()=>{
+  if (refValue !== null && tool==="Font-Tools" ) {
     refValue.current.style.fontSize = `${finalFontSize}px`;
-    console.log(finalFont);
+    // console.log(finalFont, finalFontSize,textColor);
     refValue.current.style.fontFamily = `${finalFont}`;
+    refValue.current.style.color=textColor;
+
+    pageContent.current[pageIndex].texts[index].fontSize = `${finalFontSize}px`;
+    pageContent.current[pageIndex].texts[index].color= textColor;
+    pageContent.current[pageIndex].texts[index].family=`${finalFont}`
+    // console.log(pageContent.current[pageIndex])
   }
+  if (refValue !== null && tool==="Dimesion-Tools") {
+
+  }
+},[finalFontSize,finalFont,textColor])
   const captureText = (props, index) => {
     dispatch(setText({ props, index, pageIndex: 0 }));
   };
   useEffect(() => {
     return () => {
       if( tool==="Font-Tools"){
-      console.log("how many times i run");
+      // console.log("how many times i run");
       let props = {
         family: finalFont,
         fontsize: finalFontSize,
@@ -49,19 +61,12 @@ const HeaderPage = React.forwardRef(({ index, ele, refValue, tool }) => {
       onClick={(event) => {
         event.stopPropagation();
       }}
+      onMouseDown={(event) => {
+        event.stopPropagation();
+      }}
     >
-      <Editor tool={tool} finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>
-      {/* <FontSize
-        finalFontSize={finalFontSize}
-        setFinalFontSize={setFinalFontSize}
-      />
-       <FontPickerComp finalFont={finalFont} setFinalFont={setFinalFont} />
-      <ColorPalette
-        index={index}
-        actionType={setText}
-        isTemplateColor={false}
-        currentColor={ele.color}
-      /> */}
+      <Editor tool={tool} textColor={textColor} setTextColor={setTextColor} finalFont={finalFont} setFinalFont={setFinalFont} finalFontSize={finalFontSize} setFinalFontSize={setFinalFontSize}/>
+    
     </div>
   );
 });

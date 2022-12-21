@@ -17,11 +17,11 @@
 .inputBox {
   display: flex;
   align-items: center;
-  width: 823px;
+  width: 884px;
   height: 48px;
   background: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 124px;
+  border: 1px solid #003459;
+  border-radius: 10px;
   /* justify-content: center; */
 }
 .inputBox input {
@@ -31,8 +31,9 @@
   font-family: "Verdana";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+
+  font-size: 16px;
+  line-height: 19px;
 
   color: rgba(0, 52, 89, 0.61);
 }
@@ -50,19 +51,19 @@
   background-color: #fff;
 }
 .diy-btn {
-  width: 257px;
+  width: 236.63px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background: #003459;
-  border-radius: 20px;
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;
   text-align: center;
 
   color: #cdcdcd;
+  background: #003459;
+  border-radius: 10px;
 }
 /*================================= Mid================================================== */
 .diy-home-mid {
@@ -118,10 +119,36 @@
   width: 90vw;
   margin: auto;
 }
+.btm-header {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: red; */
+  align-items: center;
+}
 .diy-home-btm .div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.diy-home-btm .icon-container {
+  justify-content: space-between;
+  display: flex;
+  width: 205px;
+}
+.diy-home-btm .icon-container div {
+  border: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  /* margin: 0 5px; */
+  justify-content: center;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+}
+.diy-home-btm .icon-container div:hover,
+.activeFill {
+  background: rgba(0, 52, 89, 0.25);
 }
 .diy-home-btm .heading {
   font-family: "Inter";
@@ -208,6 +235,10 @@ h1 {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.portrait-box {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 .heading {
   padding: 20px;

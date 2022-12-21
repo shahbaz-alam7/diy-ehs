@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Rnd } from "react-rnd";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { setText } from "../../../reduxStore/actions/pageActions";
+import { setText,updatePage } from "../../../reduxStore/actions/pageActions";
 import HeaderPage from "./header/HeaderPage";
 import { ReactTransliterate } from "react-transliterate";
 import "react-transliterate/dist/index.css";
@@ -18,63 +18,102 @@ const StyledRnd = styled(Rnd)`
   }
 `;
 const TextDisplayer = React.forwardRef(
-  ({ setHeaderIndex, index, ele, color, headerIndex , activeTool,setActiveTool,toolsAvailable}) => {
-    console.log(activeTool,"SDsddddddddddddddd");
+  ({ ActiveIndex,setActiveIndex, index, ele, color, activeTool,setActiveTool,pageContent,pageIndex}) => {
+    // console.log(activeTool,"SDsddddddddddddddd");
+    const showHeader =useRef(false);
     const TextObject = useRef(ele);
     let dispatch = useDispatch();
     const [ref, setRefVal] = useState(null);
     useEffect(() => {
-      console.log(TextObject.current);
+      // console.log(TextObject.current);
     }, []);
-    const captureText = (props, index) => {
-      console.log(props, "---------------");
-      dispatch(setText({ props, index: index, pageIndex: 0 }));
-    };
-    function onResize(event, direction, ref, delta, index) {
-      const { width, height } = ref.style;
-      TextObject.current.width = width;
-      TextObject.current.height = height;
-      console.log(TextObject);
-      //captureText({width, height}, index);
+    // const captureText = (props, index) => {
+    //   // console.log(props, "---------------");
+    //   dispatch(setText({ props, index: index, pageIndex: 0 }));
+    // };
+    function onResize(event, direction, ref, delta, indexs) {
+      const { width, height, x,y} = ref.style;
+      pageContent.current[pageIndex].texts[index].height=height;
+        pageContent.current[pageIndex].texts[index].width=width;
+        pageContent.current[pageIndex].texts[index].x=x;
+      pageContent.current[pageIndex].texts[index].y=y;
     }
 
-    function onDragStop(e, d, index) {
+    function onDragStop(e, d, indexs) {
       const { x, y } = d;
-      TextObject.current.x = x;
-      TextObject.current.y = y;
-      console.log(TextObject);
-      //captureText({x,y}, index);
+      pageContent.current[pageIndex].texts[index].x=x;
+      pageContent.current[pageIndex].texts[index].y=y;
+     
     }
     function getNumber(str){
-      let a = str.split('p')
-      let num = Number(a[0]);
+      console.log(str,"--", typeof str);
+        let a = typeof str === "string"? str.split('p'):str
+        if(typeof a === "number" )
+        return a;
+        let num = Number(a[0]);
       return num
     }
+    React.useEffect(() => {
+      const onMouseDown = (e) => {
+      console.log("onMouseDown")  
+      }
+      
+      const onMouseMove = (e) => {
+        console.log("onMouseMove")  
+      };
+      const onMouseUp = (e) => {
+        console.log("onMouseUp")  
+      };
+  
+      const onClick = (e) => {
+        console.log("onClick")  
+      };
+  
+      document.addEventListener("mousedown", onMouseDown);
+      // document.addEventListener("mousemove", onMouseMove);
+      // document.addEventListener("mouseup", onMouseUp);
+      // document.addEventListener("click", onClick);
+      return () => {
+        //document.removeEventListener("click", onClick);
+        document.removeEventListener("mousedown", onMouseDown);
+        // document.removeEventListener("mousemove", onMouseMove);
+        // document.removeEventListener("mouseup", onMouseUp);
+      };
+    }, []);
     return (
       TextObject && (
-        <>
-          {activeTool==="Font-Tools"?(
+        // <>{console.log(activeTool,ActiveIndex,index,"****************")}
+          <>{(activeTool==="Font-Tools"  && ActiveIndex==index)?(
             <HeaderPage
-              setHeaderIndex={setHeaderIndex}
               index={index}
               ele={ele}
-              headerIndex={headerIndex}
               refValue={ref}
               tool={activeTool}
+              pageContent={pageContent}
+              pageIndex={pageIndex}
             />
            ) : null}
           <StyledRnd
             className="d-flex"
             default={{ x: getNumber(ele.x), y: getNumber(ele.y) }}
             bounds="parent"
-            // onDragStop={(e, d) => onDragStop(e, d, index)}
-            // onResize={(event, direction, ref, delta, index) =>
-            //   onResize(event, direction, ref, delta, index)
-            // }
+            onResize={onResize}
+            onDragStop={onDragStop}
+          
+
             onMouseDown={(event) => {
               event.stopPropagation();
-              setActiveTool(toolsAvailable.text)
+              // console.log(pageContent.current)
+              
+              // console.log(":hello mouse is down")
+              // showHeader.current=true;
+              // console.log(showHeader.current);
+              let str = "Font-Tools"
+              setActiveTool(str);
+              setActiveIndex(`${index}`);
+              // dispatch(updatePage({page:pageContent.current[pageIndex]}))
             }}
+            
             key={ele.id}
           >
             <TextComponent
@@ -91,8 +130,11 @@ const TextDisplayer = React.forwardRef(
   }
 );
 const TextComponent = React.forwardRef(
-  ({ info, setRefVal, backgroundColor, index, selectedCol, TextObject }) => {
+  ({setShowHeader, info, setRefVal, backgroundColor, index, selectedCol, TextObject }) => {
     const ref = useRef(null);
+    
+
+   
     let weight = info.isBold ? 900 : 500;
     let style = info.isItalic ? "italic" : "normal";
     let textdecoration = info.underline ? "underline" : "none";
@@ -120,7 +162,7 @@ const TextComponent = React.forwardRef(
       }
     }, [ref]);
     function handleChange(event) {
-      console.log(ref);
+      // console.log(ref);
     }
 
     return (

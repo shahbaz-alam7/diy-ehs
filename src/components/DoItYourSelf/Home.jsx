@@ -11,7 +11,6 @@ const Home = () => {
   return (
     <div className="main-home">
       {/* <Navbar /> */}
-      <Editor />
       <div className="home_container">
         <SidePanel
           openSlider={openSlider}

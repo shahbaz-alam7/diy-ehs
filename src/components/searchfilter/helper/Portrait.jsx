@@ -2,8 +2,28 @@ import React from "react";
 import "./portrait.css";
 import mainImg from "../img/mainImg.png";
 import topImg from "../img/notice.png";
-const Portrait = ({ Signal_Word, Text_2, Text_1, Text_3, color }) => {
+const Portrait = ({ Signal_Word, Text_2, Text_1, Text_3, color ,img,id ,loadPageData}) => {
   return (
+    <div className="portrait">
+      <div
+        className="pictogram"
+        onClick={() => {
+          loadPageData(id);
+        }}
+      >
+        <img
+          src={img}
+          alt="templates"
+          style={{ height: "139px", width: "180px" }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Portrait;
+
+/*
     <div className="portrait">
       <div className="pictogram">
         <div className="pictogram-title-box" style={{ background: `${color}` }}>
@@ -31,7 +51,4 @@ const Portrait = ({ Signal_Word, Text_2, Text_1, Text_3, color }) => {
         </p>
       </div>
     </div>
-  );
-};
-
-export default Portrait;
+    */

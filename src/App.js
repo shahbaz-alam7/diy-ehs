@@ -3,23 +3,37 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";
-import { getPageFromTemplate } from "./reduxStore/actions/pageActions";
+import {
+  getCategory,
+  getPageFromTemplate,
+} from "./reduxStore/actions/pageActions";
 import Home from "./components/DoItYourSelf/Home";
 import Main from "./components/searchfilter/Main";
+import Order from "./components/Pages/Order.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-  const [diypage,loadPage] =useState(true);
+  const dispatch = useDispatch();
+  const [diypage, loadPage] = useState(false);
+
   function loadPageData(templateId) {
     dispatch(getPageFromTemplate({ templateId: templateId }));
     loadPage(true);
   }
-  const dispatch = useDispatch();
   useEffect(() => {}, []);
   return (
-    // <div className="App" style={{backgroundColor:"yellow",width:"400px", height:"400px"}}>
-    <div className="App">
-      <Navbar />
-      {diypage ? <Home /> : <Main loadPageData={loadPageData} />}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+
+        <Routes>
+          <Route
+            path="/diy"
+            element={diypage ? <Home /> : <Main loadPageData={loadPageData} />}
+          />
+          <Route path="/orderdiy" element={<Order />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

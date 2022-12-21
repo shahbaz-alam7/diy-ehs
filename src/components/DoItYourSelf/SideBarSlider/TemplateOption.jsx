@@ -1,10 +1,12 @@
 import React from "react";
 import "./styles/Template.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemplate } from "../../../reduxStore/actions/pageActions";
+import { getTemplate, changeTemplate } from "../../../reduxStore/actions/pageActions";
 import { useEffect } from "react";
-import { IoSearchSharp } from "react-icons/io5";
-import { getCategoryTemplates } from "../../../reduxStore/actions/filterAction";
+import {
+  getCategoryTemplates,
+  getCategory,
+} from "../../../reduxStore/actions/filterAction";
 
 const TemplateOption = ({ setOpenSlider }) => {
   const data = useSelector((state) => state);
@@ -12,42 +14,30 @@ const TemplateOption = ({ setOpenSlider }) => {
 
   const filter = useSelector((state) => state.projects.filter);
   const categoryTemplates = filter.categoryTemplates;
+  const project = useSelector((state) => state.projects);
+  const pageIndex = project.currentPage;
+  let category = filter.category;
 
   useEffect(() => {
     dispatch(getCategoryTemplates({ categoryid: "9879878" }));
+    dispatch(getCategory());
   }, []);
 
-  console.log(data, "inside text");
+  // console.log(data, "inside text");
   // const project = useSelector((state) => state.projects);
   // const templateData = project.commons.templates;
-  console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", categoryTemplates, data);
-
-  // const pageIndex = project.currentPage;
+  
   return (
     <div className="template_container">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="categories-div-panel">
         <p className="heading">Categories</p>
-
-        <div className="category">
-          <p>Posters</p>
-        </div>
-        <div className="category">
-          <p>Floor Graphics</p>
-        </div>
-        <div className="category">
-          <p>Signages</p>
-        </div>
-        <div className="category">
-          <p>Utility Stickers</p>
-        </div>
+        {category.map((item) => {
+          return (
+            <div className="category">
+              <p>{item.categoryName}</p>
+            </div>
+          );
+        })}
       </div>
       <div className="recent-designs">
         <p className="heading">Recent Design</p>
@@ -55,12 +45,12 @@ const TemplateOption = ({ setOpenSlider }) => {
         <div className="designs"></div>
         <div className="designs"></div>
       </div>
-      <div className="all-categories">
+      <div className="all-categories categories-div-panel">
         <p className="heading">All Categories</p>
 
         {categoryTemplates.map((ele) => {
           return (
-            <div className="designs">
+            <div className="designs" onClick={()=>{dispatch(changeTemplate({ template:ele, pageIndex: pageIndex }))}}>
               <img
                 src={ele.templateImage}
                 alt="alter"

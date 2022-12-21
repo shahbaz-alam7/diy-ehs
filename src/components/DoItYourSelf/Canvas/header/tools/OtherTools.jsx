@@ -1,22 +1,27 @@
 import Icon from "../helper/Icon";
-
 import {
-  BiDownload,
-  IoDocumentsOutline,
-  TiDocumentAdd,
-  RiDeleteBinLine,
-  MdIosShare,
-  MdPreview,
-} from "../icons";
+  twoDocs,
+  addNew,
+  deletePic,
+  download,
+  preview,
+  share,
+} from "../../../Image/header/pic";
+
+import {clonePage } from "../../../../../reduxStore/actions/pageActions";
+import { useDispatch } from "react-redux";
 const OtherTools = () => {
+
+  const dispatch =useDispatch(); 
   return (
-    <div className="other-tools flex">
-      <Icon icon={<TiDocumentAdd className="icon" />} desc="Copy" left="-5px" />
-      <Icon icon={<IoDocumentsOutline className="icon" />} desc="Add_Page" />
-      <Icon icon={<RiDeleteBinLine className="icon" />} desc="Delete" />
-      <Icon icon={<MdPreview className="icon" />} desc="Preview" />
-      <Icon icon={<BiDownload className="icon" />} desc="Download" />
-      <Icon icon={<MdIosShare className="icon" />} desc="Share" />
+
+    <div className="other-tools flex" onClick={()=>{console.log("clicked");dispatch(clonePage())}}>
+          <Icon img={addNew} desc="Add_Page" left="-5px" />
+      <Icon img={twoDocs} desc="Copy" />
+      <Icon img={deletePic} desc="Delete" />
+      <Icon img={preview} desc="Preview" />
+      <Icon img={download} desc="Download" />
+      <Icon img={share} desc="Share" />
     </div>
   );
 };

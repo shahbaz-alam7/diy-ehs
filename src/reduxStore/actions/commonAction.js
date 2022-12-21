@@ -6,75 +6,90 @@ import TextTemplate from "../../components/DoItYourSelf/FakeData/data/TextTempla
 import store from "../store";
 import frames from "../../components/DoItYourSelf/FakeData/data/framesShape";
 
+export const getTemplateDataByID = (templateid) => {
+  let templateData = null;
+  Template.forEach((ele) => {
+    if (ele.id === templateid) {
+      const obj = {
+        id: ele.id,
+        images: [],
+        texts: [],
+        TextTemplate: [],
+        svgs: [],
+        backgroundColor: ele.backgroundColor,
+      };
 
-export const getTemplateDataByID =(templateid)=>{
-    let templateData =null;
-    Template.forEach(ele=>{
-        if(ele.id===templateid){
-        const obj ={
-            id:ele.id,
-            images:[],
-            texts:[],
-            TextTemplate:[],
-            svgs:[],
-            backgroundColor:ele.backgroundColor}
+      ele.images.forEach((logoid) => {
+        Logos.find((logoele) => {
+          if (logoele.id === logoid) {
+            obj.images.push(logoele);
+          }
+          return null;
+        });
+      });
 
-            ele.images.forEach(logoid=>{
-                Logos.find(logoele=>{
-                    if(logoele.id===logoid){
-                        obj.images.push(logoele);
-                    }
-                    return null;
-                })
-            })
+      ele.texts.forEach((textid) => {
+        Text.find((textele) => {
+          if (textele.id === textid) {
+            obj.texts.push(textele);
+          }
+          return null;
+        });
+      });
 
-            ele.texts.forEach(textid=>{
-                Text.find(textele=>{
-                    if(textele.id===textid){
-                        obj.texts.push(textele);
-                    }
-                    return null;
-                })
-            })
+      templateData = obj;
+    }
+  });
+  return templateData;
+};
 
-            templateData=obj;
+export const getTemplateData = () => {
+  let templateData = [];
+  Template.forEach((ele) => {
+    const obj = {
+      id: ele.id,
+      images: [],
+      texts: [],
+      TextTemplate: [],
+      svgs: [],
+      backgroundColor: ele.backgroundColor,
+    };
+
+    ele.images.forEach((logoid) => {
+      Logos.find((logoele) => {
+        if (logoele.id === logoid) {
+          obj.images.push(logoele);
         }
-    })            
-    return templateData;
+        return null;
+      });
+    });
 
-}
+    ele.texts.forEach((textid) => {
+      Text.find((textele) => {
+        if (textele.id === textid) {
+          obj.texts.push(textele);
+        }
+        return null;
+      });
+    });
 
-export const getTemplateData =()=>{
-        let templateData =[];
-        Template.forEach(ele=>{
-            const obj ={
-                id:ele.id,
-                images:[],
-                texts:[],
-                TextTemplate:[],
-                svgs:[],
-                backgroundColor:ele.backgroundColor}
-
-                ele.images.forEach(logoid=>{
-                    Logos.find(logoele=>{
-                        if(logoele.id===logoid){
-                            obj.images.push(logoele);
-                        }
-                        return null;
-                    })
-                })
-
-                ele.texts.forEach(textid=>{
-                    Text.find(textele=>{
-                        if(textele.id===textid){
-                            obj.texts.push(textele);
-                        }
-                        return null;
-                    })
-                })
-
-                templateData.push(obj);
-        })            
-        return templateData;
-
-}
+    templateData.push(obj);
+  });
+  return templateData;
+};
+export const openSliderOn = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: "SLIDER_ON",
+      payload: true,
+    });
+  };
+};
+export const openSliderOff = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: "SLIDER_OFF",
+      payload: false,
+    });
+  };
+};

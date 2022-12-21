@@ -6,7 +6,9 @@
   justify-content: center;
   color: hwb(0 100% 0% / 0.977);
   width: 98%;
-  height: 92.5px;
+  /* height: 92.5px; */
+  height: 13vh;
+
 
   background: #ffffff;
   /* border: 1px solid rgba(255, 255, 255, 0.25); */
@@ -25,15 +27,10 @@
 
 .logo_container:hover,
 .active {
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 .logo_container:hover .icon,
 .logo_container:hover p {
   color: #003459;
 }
-.active p {
-  color: #003459;
-}
-.active .icon {
-  color: #003459;
-}
+
