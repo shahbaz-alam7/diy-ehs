@@ -53,33 +53,6 @@ const TextDisplayer = React.forwardRef(
         let num = Number(a[0]);
       return num
     }
-    React.useEffect(() => {
-      const onMouseDown = (e) => {
-      console.log("onMouseDown")  
-      }
-      
-      const onMouseMove = (e) => {
-        console.log("onMouseMove")  
-      };
-      const onMouseUp = (e) => {
-        console.log("onMouseUp")  
-      };
-  
-      const onClick = (e) => {
-        console.log("onClick")  
-      };
-  
-      document.addEventListener("mousedown", onMouseDown);
-      // document.addEventListener("mousemove", onMouseMove);
-      // document.addEventListener("mouseup", onMouseUp);
-      // document.addEventListener("click", onClick);
-      return () => {
-        //document.removeEventListener("click", onClick);
-        document.removeEventListener("mousedown", onMouseDown);
-        // document.removeEventListener("mousemove", onMouseMove);
-        // document.removeEventListener("mouseup", onMouseUp);
-      };
-    }, []);
     return (
       TextObject && (
         // <>{console.log(activeTool,ActiveIndex,index,"****************")}
