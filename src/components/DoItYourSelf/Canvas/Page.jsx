@@ -13,13 +13,16 @@ import HeaderPage from "./header/HeaderPage";
 const Page = ({ addHeader }) => {
   const pageRef = useRef(null);
   const pageContent = useRef([]);
-
+   
   const data = useSelector((state) => {
     console.log(state,"----------------------");
-    return state.projects.pages;
+    
+    return state.projects;
   });
-  pageContent.current=data;
-  // console.log("my data", data);
+  let pageIndex = data.currentPage;
+  pageContent.current=data.pages;
+  let page = data.pages[pageIndex]||[];
+   console.log(pageIndex,"my data", data, "------------page",page);
   let color = data ? data.backgroundColor : "green";
 
   const Container = styled.div`
@@ -44,17 +47,21 @@ const Page = ({ addHeader }) => {
               // tool={"Font-Tools"}
               // tool={"Dimesion-Tools"}
               // tool={"Shapes-Tools"}
-              data.forEach(element => {
+              data.pages.forEach(element => {
                 element.logos.reverse();
               });
               
   const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);    
   const dispatch = useDispatch();        
-  return (
-    <>
+ return page?(
+    <><button style={{position :"absolute", zIndex:10}} 
+    onClick={()=>{
+      dispatch({type:"SET_CURRENT_PAGE", payload:pageIndex});
+      dispatch(updatePage({page:page}))
+     }}>Save</button>
      {/* {console.log("refreshing")} */}
      
-      <div className='Page_main_container' ref={pageRef}>
+      <div className='Page_main_container'>
        {/* <div className="frame-viewer" ref={pageRef}>
         <div id="frame-div">
           <div
@@ -63,10 +70,8 @@ const Page = ({ addHeader }) => {
               clipPath: frames[data.frame.frameNumber],
             }}
           >  */}
-          {data.map((page, pageIndex)=>{
-            // console.log(page, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-            
-            return <div
+           
+            <div
             onMouseDown={(event) => {
               event.stopPropagation();
               console.log(":hello mouse is down in main page")
@@ -84,12 +89,8 @@ const Page = ({ addHeader }) => {
                 tool={activeTool}
               />
              ) : null}
-               <button style={{position :"absolute", zIndex:10}} 
-            onClick={()=>{
-              dispatch({type:"SET_CURRENT_PAGE", payload:pageIndex});
-              dispatch(updatePage({page:pageContent.current[pageIndex]}))
-             }}>Save</button>
-            <Container>
+              
+            <Container  ref={pageRef}>
             
               {page.logos.map((ele, index) => {
               
@@ -132,14 +133,14 @@ const Page = ({ addHeader }) => {
               
             </Container>
             </div>
-            })}
+          
           {/* </div>
         </div>
       </div> */}
       </div>
       <Download pageRef={pageRef} />
     </>
-  );
+  ):null;
 };
 
 export default Page;

@@ -7,6 +7,7 @@ import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
+import { useDispatch } from "react-redux";
 function ImageComp ({img}){
     const Image = styled.div`
       width: 100%;
@@ -38,6 +39,7 @@ const Container = styled.div`
   }
 `;
 const RightSidePanel = () => {
+  const dispatch =useDispatch();
   const [menuIcon, setMenuIcon] = useState(false);
   const data = useSelector((state) => {
     return state.projects.pages;
@@ -45,17 +47,21 @@ const RightSidePanel = () => {
   // console.log(data,"---------------------000000000000000000000000000000000-");
   
   function getNumber(str){
-    let a = str.split('p')
+    console.log(str,"--", typeof str);
+    let a = typeof str === "string"? str.split('p'): str;
+    if(typeof a === "number" )
+    return a;
     let num = Number(a[0]);
     return num
   }
+  
   return (
     <>
       <div className="right-panel">
         <div className="right_items">
           <div className="right_item">
-            {data.map(elePage=>{
-              return <div className="item">
+            {data.map((elePage, i)=>{
+              return <div className="item" onClick={()=>dispatch({type:"SET_CURRENT_PAGE", payload:i})}>
                   <Container>
                   
                   {elePage.logos.map((ele, index) => {
