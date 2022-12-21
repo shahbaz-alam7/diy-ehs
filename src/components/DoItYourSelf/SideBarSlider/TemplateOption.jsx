@@ -20,10 +20,10 @@ const TemplateOption = ({ setOpenSlider }) => {
     dispatch(getCategoryTemplates({ categoryid: "9879878" }));
   }, []);
 
-  console.log(data, "inside text");
+  // console.log(data, "inside text");
   // const project = useSelector((state) => state.projects);
   // const templateData = project.commons.templates;
-  console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", categoryTemplates, data);
+  // console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", categoryTemplates, data);
   
   return (
     <div className="template_container">

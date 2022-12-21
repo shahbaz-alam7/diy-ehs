@@ -11,7 +11,7 @@ const Items = ({ itemName, setName, loadPageData }) => {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.projects.filter);
   const categoryTemplates = filter.categoryTemplates;
-  console.log(filter, "0000000000000000000000");
+  // console.log(filter, "0000000000000000000000");
   const signalWords = data[0].signals;
 
   return (

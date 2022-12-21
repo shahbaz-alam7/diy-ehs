@@ -7,10 +7,15 @@ import {
   preview,
   share,
 } from "../../../Image/header/pic";
+
+import {clonePage } from "../../../../../reduxStore/actions/pageActions";
+import { useDispatch } from "react-redux";
 const OtherTools = () => {
+
+  const dispatch =useDispatch(); 
   return (
-    <div className="other-tools flex">
-      <Icon img={addNew} desc="Copy" left="-5px" />
+    <div className="other-tools flex" onClick={()=>{console.log("clicked");dispatch(clonePage())}}>
+      <Icon img={addNew} desc="Copy" left="-5px"  />
       <Icon img={twoDocs} desc="Add_Page" />
       <Icon img={deletePic} desc="Delete" />
       <Icon img={preview} desc="Preview" />

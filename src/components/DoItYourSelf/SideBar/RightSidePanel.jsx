@@ -42,7 +42,7 @@ const RightSidePanel = () => {
   const data = useSelector((state) => {
     return state.projects.pages;
   });
-  console.log(data,"---------------------000000000000000000000000000000000-");
+  // console.log(data,"---------------------000000000000000000000000000000000-");
   
   function getNumber(str){
     let a = str.split('p')
@@ -68,27 +68,32 @@ const RightSidePanel = () => {
                               width: getNumber(ele.width)/4,
                               height:getNumber(ele.height)/4,
                             }}
+                            
                             lockAspectRatio={true}
                             key={ele._id}
+                            disableDragging={true}
+                            enableResizing={false}
                         >
                               <ImageComp  img={ele.logoURL} />
                       </StyledRnd>
                       );
                   })}
                   {elePage.texts.map((info, index) => {
-                    console.log(info)
+                    // console.log(info)
                     let x=getNumber(info.x)
                     let fontSize = getNumber(info.fontSize)
                     let y = getNumber(info.y)
-                    console.log("x:",x,"y:",y,"fontSize:",fontSize)
+                    // console.log("x:",x,"y:",y,"fontSize:",fontSize)
                       return (
                        
                                     <StyledRnd
                                         className="d-flex"
-                                        default={{ x: getNumber(info.x)/4, y: getNumber(info.y)/4 }}
+                                        default={{ x: getNumber(info.x), y: getNumber(info.y) }}
                                         bounds="parent"
-
+                                        scale={0.25}
                                         key={info._id}
+                                        disableDragging={true}
+                            enableResizing={false}
                                       >
                                         <TextComponent
                                           info={info}
@@ -137,7 +142,7 @@ function getNumber(str){
 
 
     return (
-      <div contenteditable="true">
+      <div>
         <TextField >
           {info.text}
         </TextField>

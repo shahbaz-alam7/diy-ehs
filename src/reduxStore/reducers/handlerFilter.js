@@ -12,9 +12,9 @@ const handlePage = (state = initialState, action) => {
         case 'CATEGORY':
             return {...state, category:[...action.payload]};
         case 'CATEGORY_TEMPALTES':
-            console.log(action.payload);
+            // console.log(action.payload);
             return {...state, categoryTemplates:action.payload.templates}
-        case 'ALL_TEMPLATES':console.log(action.payload);
+        case 'ALL_TEMPLATES'://console.log(action.payload);
         return {...state, categoryTemplates:action.payload}
         case 'TEXT' :
             return {...state, text:action.payload};

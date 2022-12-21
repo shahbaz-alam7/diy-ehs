@@ -33,6 +33,9 @@ export const getLogo =({logo, pageIndex})=> {
 export const updatePage=({page})=>{
     return async dispatch =>{
     console.log(page, "to be updated page ----------------")
+    let dataStore= store.getState();
+    let pages =dataStore.projects.pages;
+    let currentPage = dataStore.projects.currentPage;
     let obj={...page, "operationType":3,pageId:page._id}
     const response = await fetch(`http://localhost:8000/diy/diyaddToPage`, {
                 method: "POST",
@@ -44,17 +47,49 @@ export const updatePage=({page})=>{
               const data = await response.json();
               //console.log(data);
               if(data.status===200)
-                {console.log(data.data,"ppppppppppppppppppppppppppppppp");
+                {
                     let page = [data.data];
-                    console.log("?????????????????????page====", page);
+                    pages = pages.slice(0, currentPage).concat(page).concat(pages.slice(currentPage+1))
+                    console.log("?????????????????????page====", page, pages);
+                    dispatch({
+                        type: "ADD_PAGE",
+                        payload: {page:pages},
+                      });
+                }
+    }
+}
+export const clonePage =()=>{
+    return async dispatch =>{
+        let data= store.getState();
+
+        let projectId=data.projects.commons.projectID;
+        let currentPage =data.projects.currentPage;
+        let pageId = data.projects.pages[currentPage]._id;
+        //console.log(data,"data", projectId, "===",pageId,"paegId")
+        let obj = {
+            "pageId":pageId,
+            "projectId":projectId
+        } 
+        const response = await fetch(`http://localhost:8000/diy/diyclonePage`, {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: { "Content-Type": "application/json",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVmODAwMDJiYjg5MjJiMjRkMGE3YzciLCJSb2xlIjoidXNlciIsImlhdCI6MTY3MTUyMTM0NiwiZXhwIjoxNjc1MTIxMzQ2fQ.qAZNqayStO5pfktz-nFskDs6d8UkMvcZIasrtGakUYQ"
+             },
+              });
+              const dataResponse = await response.json();
+              //console.log(data);
+              if(dataResponse.status===200)
+                {//console.log(dataResponse.data.result[0].pageArray,"##############################");
+                    let page =dataResponse.data.result[0].pageArray;
+                    //console.log("?????????????????????page====", page);
                     dispatch({
                         type: "ADD_PAGE",
                         payload: {page:page},
                       });
                 }
-    }
+    } 
 }
-
 export const getPageFromTemplate=({templateId})=>{
     return async dispatch =>{
             console.log("dfjnsjkdnfjdn===================function page from template")
@@ -74,12 +109,17 @@ export const getPageFromTemplate=({templateId})=>{
             
               if(data.status===200)
                 {
+                    let projectId= data.data.result[0]._id;
                     let page = data.data.result[0].pageArray;
-                    console.log("==================page====", page,data);
+                    console.log(projectId,"==================page====", page,data);
                     dispatch({
                         type: "ADD_PAGE",
                         payload: {page:page},
                       });
+                      dispatch({
+                        type:"CURRENT_PROJECT",
+                        payload:{projectId:projectId}
+                      })
                 }
             }
     }

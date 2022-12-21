@@ -26,7 +26,7 @@ function ImageComp ({img,setRefVal}){
     `;
     useEffect(() => {
       if (!(ref === null)) {
-        console.log(ref);
+       // console.log(ref);
         setRefVal(ref);
       }
     }, [ref]);
@@ -40,28 +40,34 @@ const ImageComponent = ({pageContent,pageIndex,setActiveIndex,ActiveIndex,ele, i
     const dispatch =useDispatch();
     function onResize(event, direction, ref, delta, indexs) {
      // console.log(ref, ref.style, ref.style.width,"aaaaaaaa",ref.style.height, pageContent.current[pageIndex], index,"llll")
-        const { width, height } = ref.style;
+        const { width, height,x,y } = ref.style;
+        console.log(pageContent.current[pageIndex].logos[index]);
         pageContent.current[pageIndex].logos[index].height=height;
         pageContent.current[pageIndex].logos[index].width=width;
+        pageContent.current[pageIndex].logos[index].x=x;
+        pageContent.current[pageIndex].logos[index].y=y;
       }
       
-      function onDragStop(e, d , index) {
-
+      function onDragStop(e, d , indexs) {
+        console.log(pageContent.current[pageIndex].logos[index]);
         const { x, y } = d;
-        console.log(d)
+        //console.log(d)
        // console.log(x,"----",y)
         pageContent.current[pageIndex].logos[index].x=x;
         pageContent.current[pageIndex].logos[index].y=y;
       }
    
       function getNumber(str){
-        let a = str.split('p')
+        console.log(str,"--", typeof str);
+        let a = typeof str === "string"? str.split('p'): str;
+        if(typeof a === "number" )
+        return a;
         let num = Number(a[0]);
         return num
       }
   return (
     <>
-    {console.log(activeTool ,index, ActiveIndex)}
+    {/* {console.log(activeTool ,index, ActiveIndex)} */}
     {(activeTool==="Image-Tools"  && ActiveIndex==index)?(
             <HeaderPage
             index={index}
@@ -84,14 +90,14 @@ const ImageComponent = ({pageContent,pageIndex,setActiveIndex,ActiveIndex,ele, i
                 key={ele._id}
                 onMouseDown={(event) => {
                   event.stopPropagation();
-                    console.log(":hello mouse is down")
-                    // showHeader.current=true;
-                    // console.log(showHeader.current);
+                //     // console.log(":hello mouse is down")
+                //     // showHeader.current=true;
+                //     // console.log(showHeader.current);
                     let str = "Image-Tools"
                     setActiveTool(str);
                     setActiveIndex(`${index}`);
-                    //dispatch(updatePage({page:pageContent.current[pageIndex]}))
-                }}
+                //     //dispatch(updatePage({page:pageContent.current[pageIndex]}))
+                 }}
             >
             <ImageComp  img={ele.logoURL} setRefVal={setRefVal}/>
     </StyledRnd>

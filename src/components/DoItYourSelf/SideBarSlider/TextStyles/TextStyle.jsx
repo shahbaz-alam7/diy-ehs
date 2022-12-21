@@ -17,7 +17,7 @@ const TextStyle = ({ setOpenSlider, setAddHeader }) => {
     dispatch(getAllText());
   }, []);
   let texts = data.projects.filter.text;
-  console.log(texts, "inside text");
+  // console.log(texts, "inside text");
   const project = useSelector((state) => state.projects);
   const pageIndex = project.currentPage;
   return (

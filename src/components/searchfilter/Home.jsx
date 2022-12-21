@@ -23,7 +23,7 @@ const Home = ({ setName, loadPageData }) => {
   const categoryTemplates = filter.categoryTemplates;
   const [categroyId, setCategoryId] = useState();
 
-  console.log("jkdsfjkgsdfgjdfgjk categroy", category, categoryTemplates);
+  // console.log("jkdsfjkgsdfgjdfgjk categroy", category, categoryTemplates);
   useEffect(() => {
     dispatch(getCategory());
   }, []);

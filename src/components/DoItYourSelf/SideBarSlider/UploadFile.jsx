@@ -18,7 +18,7 @@ const UploadFile = ({ setOpenSlider }) => {
     setFile(file);
   };
   const dropHandler = (files, event) => {
-    console.log("onDrop!", files, event);
+    // console.log("onDrop!", files, event);
   };
   return (
     <div className="canvas_size">

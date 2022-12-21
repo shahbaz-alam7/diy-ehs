@@ -22,9 +22,9 @@ const Editor = ({
   setFinalFontSize,
 }) => {
   const toogle = useSelector((state) => state.projects.sideSlider);
-  console.log(tool, "psdfkojsdafiajsdjf");
+  // console.log(tool, "psdfkojsdafiajsdjf");
 
-  console.log(tool, "psdfkojsdafiajsdjf", openSlider);
+  // console.log(tool, "psdfkojsdafiajsdjf", openSlider);
   return (
     <div className={toogle ? "editor" : "editor mx-width"}>
       <div className="editor-child">
