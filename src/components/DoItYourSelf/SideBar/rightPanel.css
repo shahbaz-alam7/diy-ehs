@@ -23,8 +23,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 81px;
-  height: 109px;
+  width: 100px;
+  height: 100px;
   left: 1161px;
   top: 114px;
   margin-top: 15px;
@@ -37,6 +37,6 @@
   /* display: none; */
 }
 .right_items .item {
-  width: 81px;
-  height: 109px;
+  width: 100px;
+  height: 100px;
 }

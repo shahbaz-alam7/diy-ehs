@@ -8,14 +8,14 @@ export const getAllLogo =()=>{
                 .post("http://localhost:8000/diy/getLogos")
                 .then((res) => res)
                 .catch((err) => {
-                  console.log(err);
+                  // console.log(err);
                   return [];
                 });
           };
           const res = await getLogo();
-          console.log(res,"-----------------");
+          // console.log(res,"-----------------");
           let logo = res.data.data.logos
-          console.log("logo====", logo);
+          // console.log("logo====", logo);
           dispatch({
             type: "LOGO",
             payload: logo,
@@ -33,14 +33,14 @@ export const getAllText =()=>{
                 .post(`http://localhost:8000/diy/getAllText`)
                 .then((res) => res)
                 .catch((err) => {
-                  console.log(err);
+                  // console.log(err);
                   return [];
                 });
           };
           const res = await getText();
-          console.log(res,"-----------------");
+          // console.log(res,"-----------------");
           let text = res.data.data.texts
-          console.log("text====", text);
+          // console.log("text====", text);
           dispatch({
             type: "TEXT",
             payload: text,
@@ -57,13 +57,13 @@ export const getCategory =()=>{
                   .get(`http://localhost:8000/diy/diygetcategory`)
                   .then((res) => res)
                   .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                     return [];
                   });
             };
             const res = await getCat();
             let category = res.data.data.category
-            console.log("categroy====", category);
+            // console.log("categroy====", category);
             dispatch({
               type: "CATEGORY",
               payload: category,
@@ -82,13 +82,13 @@ export const getCategory =()=>{
                       })
                       .then((res) => res)
                       .catch((err) => {
-                        console.log(err);
+                        // console.log(err);
                         return [];
                       });
                 };
                 const res = await getAllTemplates();
                 let templates = res.data.data;
-                console.log("categroy templates====", templates);
+                // console.log("categroy templates====", templates);
                 dispatch({
                   type: "ALL_TEMPLATES",
                   payload: templates,

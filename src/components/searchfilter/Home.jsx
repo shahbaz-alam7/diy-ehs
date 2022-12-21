@@ -20,6 +20,7 @@ const Home = ({ setName, loadPageData, templates, setTemplates }) => {
   const categoryTemplates = filter.categoryTemplates;
   const [categroyId, setCategoryId] = useState();
   const filterPortrait = () => {
+    
     const filterData = templates.filter((item) => {
       return item.mode === "potrait";
     });
@@ -27,7 +28,8 @@ const Home = ({ setName, loadPageData, templates, setTemplates }) => {
     setActiveFilter("portrait");
   };
   const filterLandscape = () => {};
-  console.log("jkdsfjkgsdfgjdfgjk categroy", category, filter);
+
+  // console.log("jkdsfjkgsdfgjdfgjk categroy", category, categoryTemplates);
   useEffect(() => {
     dispatch(getCategory());
   }, []);

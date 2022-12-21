@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/Template.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getTemplate } from "../../../reduxStore/actions/pageActions";
+import { getTemplate, changeTemplate } from "../../../reduxStore/actions/pageActions";
 import { useEffect } from "react";
 import {
   getCategoryTemplates,
@@ -14,6 +14,8 @@ const TemplateOption = ({ setOpenSlider }) => {
 
   const filter = useSelector((state) => state.projects.filter);
   const categoryTemplates = filter.categoryTemplates;
+  const project = useSelector((state) => state.projects);
+  const pageIndex = project.currentPage;
   let category = filter.category;
 
   useEffect(() => {
@@ -21,16 +23,10 @@ const TemplateOption = ({ setOpenSlider }) => {
     dispatch(getCategory());
   }, []);
 
-  console.log(data, "inside text");
+  // console.log(data, "inside text");
   // const project = useSelector((state) => state.projects);
   // const templateData = project.commons.templates;
-  console.log(
-    "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
-    categoryTemplates,
-    filter
-  );
-
-  // const pageIndex = project.currentPage;
+  
   return (
     <div className="template_container">
       <div className="categories-div-panel">
@@ -54,7 +50,7 @@ const TemplateOption = ({ setOpenSlider }) => {
 
         {categoryTemplates.map((ele) => {
           return (
-            <div className="designs">
+            <div className="designs" onClick={()=>{dispatch(changeTemplate({ template:ele, pageIndex: pageIndex }))}}>
               <img
                 src={ele.templateImage}
                 alt="alter"

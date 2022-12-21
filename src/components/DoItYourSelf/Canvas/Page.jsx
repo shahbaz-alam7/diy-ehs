@@ -19,7 +19,7 @@ const Page = ({ addHeader }) => {
     return state.projects.pages;
   });
   pageContent.current=data;
-  console.log("my data", data);
+  // console.log("my data", data);
   let color = data ? data.backgroundColor : "green";
 
   const Container = styled.div`
@@ -52,7 +52,7 @@ const Page = ({ addHeader }) => {
   const dispatch = useDispatch();        
   return (
     <>
-     {console.log("refreshing")}
+     {/* {console.log("refreshing")} */}
      
       <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
@@ -64,7 +64,7 @@ const Page = ({ addHeader }) => {
             }}
           >  */}
           {data.map((page, pageIndex)=>{
-            console.log(page, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+            // console.log(page, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             
             return <div
             onMouseDown={(event) => {
@@ -73,7 +73,7 @@ const Page = ({ addHeader }) => {
               let str = "Dimesion-Tools"
               setActiveTool(str);
               setActiveIndex(`${pageIndex}`);
-              dispatch(updatePage({page:pageContent.current[pageIndex]}))
+              
             }}
             >
               {activeTool==="Dimesion-Tools"?(
@@ -84,24 +84,33 @@ const Page = ({ addHeader }) => {
                 tool={activeTool}
               />
              ) : null}
+               <button style={{position :"absolute", zIndex:10}} 
+            onClick={()=>{
+              dispatch({type:"SET_CURRENT_PAGE", payload:pageIndex});
+              dispatch(updatePage({page:pageContent.current[pageIndex]}))
+             }}>Save</button>
             <Container>
-              
+            
               {page.logos.map((ele, index) => {
               
                 return (
-                  <ImageComponent index={index} ele={ele} 
+                  <ImageComponent 
+                    index={index} 
+                    ele={ele} 
                     key={ele.index} 
                      activeTool={activeTool}
                     setActiveTool={setActiveTool}
                     toolsAvailable={toolsAvailable} 
                     setActiveIndex={setActiveIndex}
                     ActiveIndex={ActiveIndex}
+                    pageContent={pageContent}
+                    pageIndex={pageIndex}
                     />
                 );
               })}
 
               {page.texts.map((ele, index) => {
-                console.log(ele, "pageeeeeeeeeeeeeeeeeeeeeeeeeee")
+                // console.log(ele, "pageeeeeeeeeeeeeeeeeeeeeeeeeee")
                 return (
                   <Text
                     setText={setText}

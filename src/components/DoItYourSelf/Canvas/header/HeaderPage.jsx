@@ -11,7 +11,7 @@ import { setText } from "../../../../reduxStore/actions/pageActions";
 import Editor from "./Editor";
 import "../styles/editor.css";
 const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refValue, tool }) => {
-  console.log("ref value", refValue, index,ele);
+  // console.log("ref value", refValue, index,ele);
   const dispatch = useDispatch();
   
   const [textColor, setTextColor] = useState(ele.color||"black");
@@ -21,19 +21,19 @@ const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refVal
    initialFont = Number(ele.fontSize.slice(0, ele.fontSize.length - 2));
   }
   const [finalFontSize, setFinalFontSize] = useState(initialFont);
-  console.log(finalFont, finalFontSize);
-  console.log(refValue, "=-- -- ", index, "=====", tool);
+  // console.log(finalFont, finalFontSize);
+  // console.log(refValue, "=-- -- ", index, "=====", tool);
   useEffect(()=>{
   if (refValue !== null && tool==="Font-Tools" ) {
     refValue.current.style.fontSize = `${finalFontSize}px`;
-    console.log(finalFont, finalFontSize,textColor);
+    // console.log(finalFont, finalFontSize,textColor);
     refValue.current.style.fontFamily = `${finalFont}`;
     refValue.current.style.color=textColor;
 
     pageContent.current[pageIndex].texts[index].fontSize = `${finalFontSize}px`;
     pageContent.current[pageIndex].texts[index].color= textColor;
     pageContent.current[pageIndex].texts[index].family=`${finalFont}`
-    console.log(pageContent.current[pageIndex])
+    // console.log(pageContent.current[pageIndex])
   }
   if (refValue !== null && tool==="Dimesion-Tools") {
 
@@ -45,7 +45,7 @@ const HeaderPage = React.forwardRef(({ pageContent, pageIndex,index, ele, refVal
   useEffect(() => {
     return () => {
       if( tool==="Font-Tools"){
-      console.log("how many times i run");
+      // console.log("how many times i run");
       let props = {
         family: finalFont,
         fontsize: finalFontSize,

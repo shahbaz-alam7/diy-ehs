@@ -13,7 +13,7 @@ const Frame = ({ addHeader }) => {
 
   const dispatch = useDispatch();
   const addPageHandler = () => {
-    console.log(pageInfo, currentPage, pageInfo[currentPage].template.id);
+   // console.log(pageInfo, currentPage, pageInfo[currentPage].template.id);
     let pageNo = currentPage;
     dispatch({
       type: "CREATE_EMPTY_PAGE",

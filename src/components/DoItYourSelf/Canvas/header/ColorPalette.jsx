@@ -35,10 +35,10 @@ const ColorPalette = ({textColor,setTextColor, index, actionType, isTemplateColo
         <div style={{ position: "absolute" }}>
           <CompactPicker
             onChange={(updateTextColor) => {
-              console.log(updateTextColor.rgb, "====");
+              // console.log(updateTextColor.rgb, "====");
               let color = `rgb(${updateTextColor.rgb.r},${updateTextColor.rgb.g},${updateTextColor.rgb.b},${updateTextColor.rgb.a})`;
 
-              console.log(color);
+              // console.log(color);
               captureText({ color: color }, index);
             }}
           />

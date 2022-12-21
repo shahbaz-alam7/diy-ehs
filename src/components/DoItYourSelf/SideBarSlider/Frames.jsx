@@ -54,7 +54,7 @@ const FramesOption = () => {
               style={{ clipPath: item }}
               onClick={() => {
                 setFrameIndex(i);
-                console.log("000000000000000000i", i);
+                // console.log("000000000000000000i", i);
               }}
             />
           );

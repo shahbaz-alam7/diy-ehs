@@ -2,7 +2,8 @@ import {getTemplateData} from "../actions/commonAction";
 import {getTemplateDataByID} from "../actions/commonAction";
 const initialState ={
     templates:[],
-    templateDataByID:null
+    templateDataByID:null,
+    projectID:""
 };
 
 const handleCommons = (state = initialState, action) => {
@@ -13,6 +14,9 @@ const handleCommons = (state = initialState, action) => {
     case "GET_TEMPLATE_BY_ID":
           let templateDataByID =getTemplateDataByID();
           return {...state, templateDataByID:templateDataByID}
+    case "CURRENT_PROJECT"://console.log(action)
+        return {...state, projectID:action.payload.projectId        }
+
     default :    return state;
     }
 }
