@@ -28,6 +28,10 @@ import bg from "./bg.png";
 import canvasSize from "./canvasSize.png";
 import upload from "./upload.png";
 import sticker from "./sticker.png";
+import Filter from "./Filter.png";
+import Sort from "./Sort.png";
+import Landscape1 from "./Landscape1.png";
+import Portrait1 from "./Portrait1.png";
 
 export {
   crop,
@@ -60,4 +64,8 @@ export {
   canvasSize,
   upload,
   sticker,
+  Filter,
+  Sort,
+  Landscape1,
+  Portrait1,
 };

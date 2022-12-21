@@ -10,8 +10,8 @@ import {
 const OtherTools = () => {
   return (
     <div className="other-tools flex">
-      <Icon img={addNew} desc="Copy" left="-5px" />
-      <Icon img={twoDocs} desc="Add_Page" />
+      <Icon img={addNew} desc="Add Page" left="-5px" />
+      <Icon img={twoDocs} desc="Copy" />
       <Icon img={deletePic} desc="Delete" />
       <Icon img={preview} desc="Preview" />
       <Icon img={download} desc="Download" />

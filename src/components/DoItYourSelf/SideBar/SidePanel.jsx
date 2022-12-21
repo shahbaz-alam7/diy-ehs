@@ -14,7 +14,7 @@ import {
   upload,
   sticker,
 } from "../Image/header/pic";
-import { IoArrowBack } from "react-icons/io5";
+import { IoArrowBack, IoSearchSharp } from "react-icons/io5";
 import CanvasSize from "../SideBarSlider/CanvasSize";
 import UploadFile from "../SideBarSlider/UploadFile";
 import Background from "../SideBarSlider/Background";
@@ -87,8 +87,18 @@ const SidePanel = ({ openSlider, setOpenSlider, setAddHeader }) => {
       </div>
       {openSlider && (
         <div className="toggle-container-side ">
-          <div className="back-div" onClick={backButtonClick}>
-            <IoArrowBack className="back-btn" />
+          <div className="search-back-btns">
+            <div className="search-div">
+              <IoSearchSharp className="icon" />{" "}
+              <input
+                type="text"
+                name="searcg_template"
+                placeholder="Search templates"
+              />
+            </div>
+            <div className="back-div" onClick={backButtonClick}>
+              <IoArrowBack className="back-btn" />
+            </div>
           </div>
           {sliderName === "Template" && (
             <TemplateOption setOpenSlider={setOpenSlider} />

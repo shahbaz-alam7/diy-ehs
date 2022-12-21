@@ -8,7 +8,6 @@ import {
 import { getAllText } from "../../../../reduxStore/actions/filterAction";
 import TextTemplate from "../../FakeData/data/TextTemplate";
 import { useEffect } from "react";
-import { IoSearchSharp } from "react-icons/io5";
 
 const TextStyle = ({ setOpenSlider, setAddHeader }) => {
   const data = useSelector((state) => state);
@@ -22,14 +21,6 @@ const TextStyle = ({ setOpenSlider, setAddHeader }) => {
   const pageIndex = project.currentPage;
   return (
     <div className="text_container">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="btn_div">
         <p>Upload files here</p>
         <button

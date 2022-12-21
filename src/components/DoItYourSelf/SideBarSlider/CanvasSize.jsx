@@ -1,17 +1,8 @@
 import React from "react";
 import "./styles/canvasSize.css";
-import { IoSearchSharp } from "react-icons/io5";
 const CanvasSize = ({ setOpenSlider }) => {
   return (
     <div className="canvas_size">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="categories-div-panel">
         <p className="heading">Sizes</p>
 

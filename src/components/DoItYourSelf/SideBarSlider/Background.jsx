@@ -1,5 +1,4 @@
 import React from "react";
-import { IoSearchSharp } from "react-icons/io5";
 import { TfiPencil } from "react-icons/tfi";
 import { GiPlainCircle } from "react-icons/gi";
 import "./styles/background.css";
@@ -23,14 +22,6 @@ const colorArr = [
 const Background = () => {
   return (
     <div className="background-div">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="solidClr_container">
         <div className="solid-clr">
           <p className="p">Solid</p>

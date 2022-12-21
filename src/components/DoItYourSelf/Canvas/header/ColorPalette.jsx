@@ -17,9 +17,9 @@ const ColorPalette = ({textColor,setTextColor, index, actionType, isTemplateColo
     <div
       style={{
         // border: "1px solid black",
-        fontSize: "35px",
-        width: "40px",
-        height: "40px",
+        fontSize: "22px",
+        width: "36px",
+        height: "22px",
         marginLeft: "14px",
       }}
     >

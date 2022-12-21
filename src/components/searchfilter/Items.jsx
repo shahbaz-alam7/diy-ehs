@@ -22,7 +22,7 @@ const Items = ({ itemName, setName, loadPageData }) => {
           {/* {itemName} */}
         </p>
         <p className="heading">Portrait</p>
-        <div className="portrait-landscape-box ">
+        <div className="portrait-box ">
           {categoryTemplates.map((ele) => {
             return (
               <div className="portrait">
@@ -43,17 +43,17 @@ const Items = ({ itemName, setName, loadPageData }) => {
           })}
         </div>
         <div className="portrait-landscape-box ">
-          {signalWords.map((item, index) => {
+          {/* {signalWords.map((item, index) => {
             return <Portrait {...item} key={index} />;
-          })}
+          })} */}
         </div>
       </div>
       <div className="items-box ">
         <p className="heading">Landscape</p>
         <div className="portrait-landscape-box ">
-          {signalWords.map((item, index) => {
+          {/* {signalWords.map((item, index) => {
             return <Landscape {...item} key={index} />;
-          })}
+          })} */}
         </div>
       </div>
     </>

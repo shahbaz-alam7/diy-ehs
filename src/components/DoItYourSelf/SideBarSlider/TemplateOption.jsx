@@ -3,8 +3,10 @@ import "./styles/Template.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemplate } from "../../../reduxStore/actions/pageActions";
 import { useEffect } from "react";
-import { IoSearchSharp } from "react-icons/io5";
-import { getCategoryTemplates } from "../../../reduxStore/actions/filterAction";
+import {
+  getCategoryTemplates,
+  getCategory,
+} from "../../../reduxStore/actions/filterAction";
 
 const TemplateOption = ({ setOpenSlider }) => {
   const data = useSelector((state) => state);
@@ -16,24 +18,21 @@ const TemplateOption = ({ setOpenSlider }) => {
 
   useEffect(() => {
     dispatch(getCategoryTemplates({ categoryid: "9879878" }));
+    dispatch(getCategory());
   }, []);
 
   console.log(data, "inside text");
   // const project = useSelector((state) => state.projects);
   // const templateData = project.commons.templates;
-  console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", categoryTemplates, data);
+  console.log(
+    "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+    categoryTemplates,
+    filter
+  );
 
   // const pageIndex = project.currentPage;
   return (
     <div className="template_container">
-      <div className="search-div">
-        <IoSearchSharp className="icon" />{" "}
-        <input
-          type="text"
-          name="searcg_template"
-          placeholder="Search templates"
-        />
-      </div>
       <div className="categories-div-panel">
         <p className="heading">Categories</p>
         {category.map((item) => {
