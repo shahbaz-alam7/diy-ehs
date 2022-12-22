@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Rnd } from "react-rnd";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { setText } from "../../../reduxStore/actions/pageActions";
+import { setText,updatePage } from "../../../reduxStore/actions/pageActions";
 import HeaderPage from "./header/HeaderPage";
 import { ReactTransliterate } from "react-transliterate";
 import "react-transliterate/dist/index.css";
@@ -18,8 +18,9 @@ const StyledRnd = styled(Rnd)`
   }
 `;
 const TextDisplayer = React.forwardRef(
-  ({ setHeaderIndex, index, ele, color, headerIndex , activeTool,setActiveTool,toolsAvailable}) => {
+  ({ ActiveIndex,setActiveIndex, index, ele, color, activeTool,setActiveTool,pageContent,pageIndex}) => {
     console.log(activeTool,"SDsddddddddddddddd");
+    const showHeader =useRef(false);
     const TextObject = useRef(ele);
     let dispatch = useDispatch();
     const [ref, setRefVal] = useState(null);
@@ -50,17 +51,18 @@ const TextDisplayer = React.forwardRef(
       let num = Number(a[0]);
       return num
     }
+    
     return (
       TextObject && (
-        <>
-          {activeTool==="Font-Tools"?(
+        <>{console.log(activeTool,ActiveIndex,index,"****************")}
+          {(activeTool==="Font-Tools"  && ActiveIndex==index)?(
             <HeaderPage
-              setHeaderIndex={setHeaderIndex}
               index={index}
               ele={ele}
-              headerIndex={headerIndex}
               refValue={ref}
               tool={activeTool}
+              pageContent={pageContent}
+              pageIndex={pageIndex}
             />
            ) : null}
           <StyledRnd
@@ -73,8 +75,19 @@ const TextDisplayer = React.forwardRef(
             // }
             onMouseDown={(event) => {
               event.stopPropagation();
-              setActiveTool(toolsAvailable.text)
+              console.log(pageContent.current)
+              
+              console.log(":hello mouse is down")
+              // showHeader.current=true;
+              // console.log(showHeader.current);
+              let str = "Font-Tools"
+              setActiveTool(str);
+              setActiveIndex(`${index}`);
+              dispatch(updatePage({page:pageContent.current[pageIndex]}))
             }}
+            // onMouseUp={event=>{
+            //   showHeader.current=false;
+            // }}
             key={ele.id}
           >
             <TextComponent
@@ -91,8 +104,11 @@ const TextDisplayer = React.forwardRef(
   }
 );
 const TextComponent = React.forwardRef(
-  ({ info, setRefVal, backgroundColor, index, selectedCol, TextObject }) => {
+  ({setShowHeader, info, setRefVal, backgroundColor, index, selectedCol, TextObject }) => {
     const ref = useRef(null);
+    
+
+   
     let weight = info.isBold ? 900 : 500;
     let style = info.isItalic ? "italic" : "normal";
     let textdecoration = info.underline ? "underline" : "none";

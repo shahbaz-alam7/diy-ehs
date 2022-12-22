@@ -42,13 +42,6 @@ const dispatch = useDispatch()
   };
   return (
     <div className="canvas_size">
-      <button
-        onClick={() => {
-          setOpenSlider(false);
-        }}
-      >
-        close
-      </button>
       <div className="search-div">
         <IoSearchSharp className="icon" />{" "}
         <input

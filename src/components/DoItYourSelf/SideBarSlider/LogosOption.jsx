@@ -4,6 +4,7 @@ import "./styles/logosOption.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getLogo } from "../../../reduxStore/actions/pageActions";
 import { getAllLogo } from "../../../reduxStore/actions/filterAction";
+import { IoSearchSharp } from "react-icons/io5";
 const LogosOption = ({ setOpenSlider }) => {
   const dispatch = useDispatch();
   const project = useSelector((state) => state.projects);
@@ -19,6 +20,14 @@ const LogosOption = ({ setOpenSlider }) => {
   return (
     <div>
       <div className="frames_container">
+        <div className="search-div">
+          <IoSearchSharp className="icon" />{" "}
+          <input
+            type="text"
+            name="searcg_template"
+            placeholder="Search templates"
+          />
+        </div>
         <div className="sticker-container">
           {Logos.map((ele) => {
             return (

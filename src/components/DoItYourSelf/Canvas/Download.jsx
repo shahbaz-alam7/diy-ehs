@@ -13,9 +13,10 @@ const Download = ({pageRef}) => {
   };
   return (
     <div style={{top:"80vh",left:"80vw",background:"green",border:"green 1px solid", position :"absolute"}}>
-      <button style={{fontSize:"30px"}} onClick={()=>{console.log("clicked");printDocumentPDF()}}>
+      {/* <button style={{fontSize:"30px"}} onClick={()=>{console.log("clicked");printDocumentPDF()}}>
         Download
-      </button>
+      </button> */}
+      <button> Review & place Order</button>
     </div>
   )
 }

@@ -3,24 +3,23 @@ import Icon from "../helper/Icon";
 import FontSize from "../helper/FontSize";
 import ColorPalette from "../ColorPalette";
 import {
-  BsCircle,
-  BsTriangle,
-  BsStar,
-  BsSquare,
-  squareBorder,
   octagonBorder,
   circularBorder,
+  squareBorder,
   strokeLines,
-} from "../icons";
-
+  square,
+  Star,
+  circle,
+  triangle,
+} from "../../../Image/header/pic";
 const ShapesTools = () => {
   return (
     <>
       <div className="shape-tools Font-tools  flex">
-        <Icon icon={<BsCircle className="icon" />} />
-        <Icon icon={<BsTriangle className="icon" />} />
-        <Icon icon={<BsStar className="icon" />} />
-        <Icon icon={<BsSquare className="icon" />} />
+        <Icon img={circle} />
+        <Icon img={triangle} />
+        <Icon img={Star} />
+        <Icon img={square} />
         <FontSize />
         <ColorPalette />
         <div className="hex-code">

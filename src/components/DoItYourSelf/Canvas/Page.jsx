@@ -3,7 +3,7 @@ import "./styles/Page.css";
 import "./styles/MainContainer.css";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { getTemplate, setText } from "../../../reduxStore/actions/pageActions";
+import { getTemplate, setText, updatePage } from "../../../reduxStore/actions/pageActions";
 import ImageComponent from "./ImageComponent";
 import Text from "./Text";
 import Download from "./Download";
@@ -11,14 +11,14 @@ import frames from "../FakeData/data/framesShape";
 import "../SideBarSlider/styles/frames.css";
 import HeaderPage from "./header/HeaderPage";
 const Page = ({ addHeader }) => {
-  console.log("kdsjafksdfknsdkfnianjksndfkjn");
   const pageRef = useRef(null);
-  
+  const pageContent = useRef([]);
 
   const data = useSelector((state) => {
     console.log(state,"----------------------");
     return state.projects.pages;
   });
+  pageContent.current=data;
   console.log("my data", data);
   let color = data ? data.backgroundColor : "green";
 
@@ -34,10 +34,10 @@ const Page = ({ addHeader }) => {
     background-color:white;
     box-shadow: 0 0 10px gray;
   `;
-  const [headerIndex, setHeaderIndex] = useState(-1);
-  useEffect(() => {
-    console.log(headerIndex);
-  }, [headerIndex]);
+  const [ActiveIndex, setActiveIndex] = useState("-1");
+  // useEffect(() => {
+  //   console.log(headerIndex);
+  // }, [headerIndex]);
 
   
   const toolsAvailable={image:"Image-Tools", text:"Font-Tools", canvas:"Dimesion-Tools",shapes:"Shapes-Tools"}
@@ -48,9 +48,11 @@ const Page = ({ addHeader }) => {
                 element.logos.reverse();
               });
               
-  const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);            
+  const [activeTool, setActiveTool] =useState(toolsAvailable.canvas);    
+  const dispatch = useDispatch();        
   return (
     <>
+     {console.log("refreshing")}
      
       <div className='Page_main_container' ref={pageRef}>
        {/* <div className="frame-viewer" ref={pageRef}>
@@ -61,11 +63,23 @@ const Page = ({ addHeader }) => {
               clipPath: frames[data.frame.frameNumber],
             }}
           >  */}
-          {data.map(page=>{
-            return <>{activeTool==="Dimesion-Tools"?(
+          {data.map((page, pageIndex)=>{
+            console.log(page, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+            
+            return <div
+            onMouseDown={(event) => {
+              event.stopPropagation();
+              console.log(":hello mouse is down in main page")
+              let str = "Dimesion-Tools"
+              setActiveTool(str);
+              setActiveIndex(`${pageIndex}`);
+              dispatch(updatePage({page:pageContent.current[pageIndex]}))
+            }}
+            >
+              {activeTool==="Dimesion-Tools"?(
               <HeaderPage
-                index={0}
-                ele={{}}
+                index={pageIndex}
+                ele={page}
                 refValue={pageRef}
                 tool={activeTool}
               />
@@ -79,29 +93,36 @@ const Page = ({ addHeader }) => {
                     key={ele.index} 
                      activeTool={activeTool}
                     setActiveTool={setActiveTool}
-                    toolsAvailable={toolsAvailable} />
+                    toolsAvailable={toolsAvailable} 
+                    setActiveIndex={setActiveIndex}
+                    ActiveIndex={ActiveIndex}
+                    />
                 );
               })}
 
               {page.texts.map((ele, index) => {
+                console.log(ele, "pageeeeeeeeeeeeeeeeeeeeeeeeeee")
                 return (
                   <Text
                     setText={setText}
                     index={index}
                     ele={ele}
                     color={color}
-                    headerIndex={headerIndex}
-                    setHeaderIndex={setHeaderIndex}
                     key={ele.text}
                     activeTool={activeTool}
                     setActiveTool={setActiveTool}
                     toolsAvailable={toolsAvailable}
+                    setActiveIndex={setActiveIndex}
+                    ActiveIndex={ActiveIndex}
+                    pageContent={pageContent}
+                    pageIndex={pageIndex}
                   />
                   
                 );
               })}
+              
             </Container>
-            </>
+            </div>
             })}
           {/* </div>
         </div>

@@ -8,9 +8,35 @@ import store from "../store";
 import frames from "../../components/DoItYourSelf/FakeData/data/framesShape";
 import { useState } from "react";
 
+
+export const updatePage=({page})=>{
+    return async dispatch =>{
+    console.log(page, "to be updated page ----------------")
+    let obj={...page, "operationType":3,pageId:page._id}
+    const response = await fetch(`http://localhost:8000/diy/diyaddToPage`, {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: { "Content-Type": "application/json",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVmODAwMDJiYjg5MjJiMjRkMGE3YzciLCJSb2xlIjoidXNlciIsImlhdCI6MTY3MTUyMTM0NiwiZXhwIjoxNjc1MTIxMzQ2fQ.qAZNqayStO5pfktz-nFskDs6d8UkMvcZIasrtGakUYQ"
+             },
+              });
+              const data = await response.json();
+              //console.log(data);
+              if(data.status===200)
+                {console.log(data.data,"ppppppppppppppppppppppppppppppp");
+                    let page = [data.data];
+                    console.log("?????????????????????page====", page);
+                    dispatch({
+                        type: "ADD_PAGE",
+                        payload: {page:page},
+                      });
+                }
+    }
+}
+
 export const getPageFromTemplate=({templateId})=>{
     return async dispatch =>{
-            
+            console.log("dfjnsjkdnfjdn===================function page from template")
             let d = {
                 template:templateId
             }
@@ -28,7 +54,7 @@ export const getPageFromTemplate=({templateId})=>{
               if(data.status===200)
                 {
                     let page = data.data.result[0].pageArray;
-                    console.log("page====", page,data);
+                    console.log("==================page====", page,data);
                     dispatch({
                         type: "ADD_PAGE",
                         payload: {page:page},

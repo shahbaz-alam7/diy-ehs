@@ -1,6 +1,6 @@
 import Icon from "../helper/Icon";
 
-import { GrDocument } from "../icons";
+import { Landscape, Portrait } from "../../../Image/header/pic";
 const DimensionTools = () => {
   const style = {
     paddingTop: "8px",
@@ -35,8 +35,8 @@ const DimensionTools = () => {
         <option value="ft">ft</option>
         <option value="m">m</option>
       </select>
-      <Icon icon={<GrDocument className="icon" />} />
-      <Icon icon={<GrDocument className="icon landscape-pic" />} />
+      <Icon img={Portrait} />
+      <Icon img={Landscape} />
     </div>
   );
 };
