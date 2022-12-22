@@ -4,6 +4,7 @@ import handleConfiguration from "./handleConfiguration";
 import handleCommons from "./handleCommons";
 import handleFilter from "./handlerFilter";
 import sideSlider from "./openSlider";
+
 const handleDIY = combineReducers({
   pages: handlePage,
   currentPage: handleConfiguration,
